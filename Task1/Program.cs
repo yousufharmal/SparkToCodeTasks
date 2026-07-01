@@ -235,7 +235,7 @@ class Program
                 Console.WriteLine("Invalid operator.");
                 break;
         }
-        */
+        
 
         // Task 11
 
@@ -268,6 +268,76 @@ class Program
         {
             Console.WriteLine("You are not eligible for a loan because you are older than 60!");
         }
+        
+        */
+        
+        // Task 12
+        
+        Console.Write("Please enter a region code ('A' for local, 'B' for national, 'C' for international): ");
+        char regionCode = char.Parse(Console.ReadLine().ToUpper());
+        Console.WriteLine("Please enter the package weight in KG: ");
+        double weight = double.Parse(Console.ReadLine());
+        double baseCost = 0.000;
+        double extraCost = 0.000;
+        switch (regionCode)
+        {
+            case 'A':
+                baseCost = 1.000;
+                if (weight > 10)
+                {
+                    extraCost = 5.000;
+                }
+                else if (weight > 5)
+                {
+                    extraCost = 2.000;
+                }
+                else
+                {
+                    extraCost = 0.000;
+                }
+                break;
+            case 'B':
+                baseCost = 3.000;
+                if (weight > 10)
+                {
+                    extraCost = 5.000;
+                }
+                else if (weight > 5)
+                {
+                    extraCost = 2.000;
+                }
+                else
+                {
+                    extraCost = 0.000;
+                }
+                break;
+            
+            case 'C':
+                baseCost = 7.000;
+                if (weight > 10)
+                {
+                    extraCost = 5.000;
+                }
+                else if (weight > 5)
+                {
+                    extraCost = 2.000;
+                }
+                else
+                {
+                    extraCost = 0.000;
+                }
+                break;
+            default:
+                Console.WriteLine("Invalid region code");
+                break;
+            
+                
+        }
+        
+        Console.WriteLine($"Base cost: {baseCost:F3} OMR");
+        Console.WriteLine($"Extra charge: {extraCost:F3} OMR");
+        double totalCost = baseCost + extraCost;
+        Console.WriteLine($"Total shipping cost: {totalCost:F3} OMR");
         
 
 
