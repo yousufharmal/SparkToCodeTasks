@@ -269,7 +269,7 @@ class Program
             Console.WriteLine("You are not eligible for a loan because you are older than 60!");
         }
         
-        */
+        
         
         // Task 12
         
@@ -339,9 +339,43 @@ class Program
         double totalCost = baseCost + extraCost;
         Console.WriteLine($"Total shipping cost: {totalCost:F3} OMR");
         
+        */
 
+        // Task 13
+        Console.Write("Please enter the length of the first side of the triangle: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Please enter the length of the second side of the triangle: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Please enter the length of the third side of the triangle: ");
+        double c = double.Parse(Console.ReadLine());
 
+        double d = a + b;
+        double e = a + c;
+        double f = b + c;
 
+        bool isTringaleValid = (d > c && e > b && f > a);
+
+        if (!isTringaleValid)
+        {
+            Console.WriteLine("This is an invalid triangle");
+        }
+        else
+        {
+            Console.WriteLine("This is a valid triangle");
+
+            if (a == b && b == c)
+            {
+                Console.WriteLine("This is an Equal triangle");
+            }
+            else if (a == b || a == c || b == c)
+            {
+                Console.WriteLine("This is an Isosceles triangle");
+            }
+            else
+            {
+                Console.WriteLine("This is a Scalene triangle");
+            }
+        }
 
     }
 }
