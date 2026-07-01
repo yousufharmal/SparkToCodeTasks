@@ -2,10 +2,7 @@
 
 class Program
 {
-    static void Main(string[] args)
-    {
-       
-        
+    static void Main(string[] args) {
         /*
          
         // Task 1
@@ -66,7 +63,7 @@ class Program
             Console.WriteLine("Sorry,you are not eligible to vote!");
         }
         
-        */
+        
         
         // Task 5
         
@@ -93,10 +90,27 @@ class Program
             default:
                 Console.WriteLine("Invalid grade");
                 break;
-               
+                
+             */
+        // Task 6
+        Console.Write("Enter the temperature in Celsius: ");
+        double celsius = double.Parse(Console.ReadLine());
+        double fahrenheit = (celsius * 9 / 5) + 32;
+
+        if (celsius < 10)
+        {
+            Console.WriteLine("The weather is Cold");
+        }
+        else if (celsius >= 10 && celsius < 30)
+        {
+            Console.WriteLine("The weather is Mild");
+        }
+        else
+        {
+            Console.WriteLine("The weather is Hot");
         }
         
-
-
-    }
+        Console.WriteLine($"The weather is {fahrenheit} fahrenheit.");
+        
+   }
 }
