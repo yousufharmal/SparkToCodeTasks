@@ -112,7 +112,7 @@ class Program
         
         Console.WriteLine($"The weather is {fahrenheit} fahrenheit.");
         
-        */
+        
         
         // Task 7
         
@@ -133,5 +133,29 @@ class Program
             Console.WriteLine("You are a Senior, Your movie ticket price is : 3.000OMR");
         }
         
-   }
+        */
+        
+        // Task 8
+        
+        Console.Write("Please enter your total bill amount OMR: ");
+        double amount = double.Parse(Console.ReadLine());
+        
+        Console.Write("Are you a loyalty member? yes/no: ");
+        string userInput = Console.ReadLine().ToLower();
+        double discount = 0;
+        if (userInput == "yes" && amount > 20)
+        {
+             discount = amount * 0.15;
+            
+        }
+        
+        
+        Console.WriteLine("The original bill in OMR: " + amount);
+        Console.WriteLine("The discount amount in OMR: " + discount);
+        double total = amount - discount;
+        Console.WriteLine("The total bill in OMR: " + total);
+
+
+
+    }
 }
