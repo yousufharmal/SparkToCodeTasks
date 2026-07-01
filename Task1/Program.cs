@@ -32,7 +32,7 @@ class Program
         
         Console.WriteLine($"The area of the rectangle is: {area}");
         Console.WriteLine($"The perimeter of the rectangle is: {perimeter}");
-        */
+        
         
         // Task 3
         
@@ -46,6 +46,26 @@ class Program
             Console.WriteLine("The number is odd");
         }
         
+        */
         
+        // Task 4
+        
+        Console.Write("Please enter your age: ");
+        int age = int.Parse(Console.ReadLine());
+        Console.Write("Do you have a valid National ID ?");
+        String nationalID = Console.ReadLine();
+
+        bool isValidNationalID = nationalID.ToLower() == "yes";
+
+        if (isValidNationalID && age > 18)
+        {
+            Console.WriteLine("You are eligible to vote!");
+        }
+        else
+        {
+            Console.WriteLine("Sorry,you are not eligible to vote!");
+        }
+
+
     }
 }
