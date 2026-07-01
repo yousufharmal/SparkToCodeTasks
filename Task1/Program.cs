@@ -46,7 +46,7 @@ class Program
             Console.WriteLine("The number is odd");
         }
         
-        */
+        
         
         // Task 4
         
@@ -65,6 +65,37 @@ class Program
         {
             Console.WriteLine("Sorry,you are not eligible to vote!");
         }
+        
+        */
+        
+        // Task 5
+        
+        Console.Write("Please enter your grade ('A', 'B', 'C', 'D', or 'F'): ");
+        char grade = char.Parse(Console.ReadLine().ToUpper());
+
+        switch (grade)
+        {
+            case 'A':
+                Console.WriteLine("Your grade is Excellent");
+                break;
+            case 'B':
+                Console.WriteLine("Your grade is Very Good");
+                break;
+            case 'C':
+                Console.WriteLine("Your grade is Good");
+                break;
+            case 'D':
+                Console.WriteLine("Pass");
+                break;
+            case 'F':
+                Console.WriteLine("Fail");
+                break;
+            default:
+                Console.WriteLine("Invalid grade");
+                break;
+               
+        }
+        
 
 
     }
