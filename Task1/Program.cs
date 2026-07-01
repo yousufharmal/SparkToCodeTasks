@@ -91,7 +91,7 @@ class Program
                 Console.WriteLine("Invalid grade");
                 break;
                 
-             */
+             
         // Task 6
         Console.Write("Enter the temperature in Celsius: ");
         double celsius = double.Parse(Console.ReadLine());
@@ -111,6 +111,27 @@ class Program
         }
         
         Console.WriteLine($"The weather is {fahrenheit} fahrenheit.");
+        
+        */
+        
+        // Task 7
+        
+        Console.Write("Please enter your age: ");
+        int age = int.Parse(Console.ReadLine());
+
+        if (age > 0 && age <= 12)
+        {
+            Console.WriteLine("You are a Child, Your movie ticket price is : 2.000OMR");
+            
+        }
+        else if (age >= 13 && age <= 59)
+        {
+            Console.WriteLine("You are an Adult, Your movie ticket price is : 5.000OMR"); 
+        }
+        else  if (age >= 60)
+        {
+            Console.WriteLine("You are a Senior, Your movie ticket price is : 3.000OMR");
+        }
         
    }
 }
