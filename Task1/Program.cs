@@ -4,7 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        //Task 1
+        // Task 1
+        
+        /*
 
         string name = "Ahmed";
         int age = 20;
@@ -15,5 +17,18 @@ class Program
         Console.WriteLine("Age: " + age);
         Console.WriteLine("Height: " + height);
         Console.WriteLine("Student: " + isStudent);
+        */
+        
+        // Task 2
+        Console.Write("Please enter the length of the rectangle: ");
+        float length = float.Parse(Console.ReadLine());
+        Console.Write("Please enter the width of the rectangle: ");
+        float width = float.Parse(Console.ReadLine());
+        
+        float area = (length * width);
+        float perimeter = (length + width) * 2;
+        
+        Console.WriteLine($"The area of the rectangle is: {area}");
+        Console.WriteLine($"The perimeter of the rectangle is: {perimeter}");
     }
 }
