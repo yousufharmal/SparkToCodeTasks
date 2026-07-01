@@ -339,7 +339,7 @@ class Program
         double totalCost = baseCost + extraCost;
         Console.WriteLine($"Total shipping cost: {totalCost:F3} OMR");
         
-        */
+        
 
         // Task 13
         Console.Write("Please enter the length of the first side of the triangle: ");
@@ -359,7 +359,7 @@ class Program
         {
             Console.WriteLine("This is an invalid triangle");
         }
-        else
+        else 
         {
             Console.WriteLine("This is a valid triangle");
 
@@ -375,7 +375,66 @@ class Program
             {
                 Console.WriteLine("This is a Scalene triangle");
             }
+            
+            
         }
+        
+        */
+        
+        // Task 14
+        
+        Console.Write("Please select a product code (1, 2, or 3): ");
+        int productCode = int.Parse(Console.ReadLine());
+        Console.Write("How many pieces would you like to purchase? ");
+        double numberOfPieces = double.Parse(Console.ReadLine());
+        Console.Write("Do you have a discount coupon ? yes/no: ");
+        string discountCoupon = Console.ReadLine().ToLower();
+
+
+        String productName = "";
+        double productPrice = 0.000;
+
+        switch (productCode)
+        {
+            case 1:
+                productName = "Headphones";
+                productPrice = 8.500;
+                break;
+            case 2:
+                productName = "Keyboards";
+                productPrice = 12.000;
+                break;
+            case 3:
+                productName = "Mouse";
+                productPrice = 5.000;
+                break;
+            default:
+                Console.WriteLine("Invalid product code");
+                return;
+        }
+
+        double subTotal = numberOfPieces * productPrice;
+        double discount = 0.000;
+        double totalAmount = subTotal;
+        if (discountCoupon == "yes" && subTotal > 20)
+        {
+            discount = subTotal * 0.10;
+            
+            totalAmount = subTotal -  discount;
+        }
+
+        double tax = totalAmount * 0.05;
+        
+        totalAmount += tax;
+        
+        Console.WriteLine("You have successfully bought: " + productName);
+        Console.WriteLine($"Subtotal: {subTotal:F3} OMR");
+        Console.WriteLine($"Discount: {discount:F3} OMR");
+        Console.WriteLine($"Tax: {tax:F3} OMR");
+        Console.WriteLine($"Total: {totalAmount:F3} OMR");
+        
+        
+
 
     }
 }
