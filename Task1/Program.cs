@@ -133,7 +133,7 @@ class Program
             Console.WriteLine("You are a Senior, Your movie ticket price is : 3.000OMR");
         }
         
-        */
+        
         
         // Task 8
         
@@ -154,7 +154,39 @@ class Program
         Console.WriteLine("The discount amount in OMR: " + discount);
         double total = amount - discount;
         Console.WriteLine("The total bill in OMR: " + total);
+        */
+        
+        // Task 9
+        Console.WriteLine("Please enter a number between 1 and 7: ");
+        int number = int.Parse(Console.ReadLine());
 
+        switch (number)
+        {
+            case 1:
+                Console.WriteLine("Today is Sunday!");
+                break;
+            case 2:
+                Console.WriteLine("Today is Monday!");
+                break;
+            case 3:
+                Console.WriteLine("Today is Tuesday!");
+                break;
+            case 4:
+                Console.WriteLine("Today is Wednesday!");
+                break;
+            case 5:
+                Console.WriteLine("Today is Thursday!");
+                break;
+            case 6:
+                Console.WriteLine("Today is Friday!");
+                break;
+            case 7:
+                Console.WriteLine("Today is Saturday!");
+                break;
+            default:
+                Console.WriteLine("Invalid day number!");
+                break;
+        }
 
 
     }
