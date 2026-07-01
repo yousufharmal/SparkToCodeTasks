@@ -154,7 +154,7 @@ class Program
         Console.WriteLine("The discount amount in OMR: " + discount);
         double total = amount - discount;
         Console.WriteLine("The total bill in OMR: " + total);
-        */
+        
         
         // Task 9
         Console.WriteLine("Please enter a number between 1 and 7: ");
@@ -185,6 +185,53 @@ class Program
                 break;
             default:
                 Console.WriteLine("Invalid day number!");
+                break;
+        }
+        
+        */
+        
+        // Task 10
+        
+        Console.Write("please enter the first number: ");
+        int firstNumber = int.Parse(Console.ReadLine());
+        Console.Write("please enter the second number: ");
+        int secondNumber = int.Parse(Console.ReadLine());
+        Console.Write("please choose an operator (+, -, *, /, or %): ");
+        string operatorString = Console.ReadLine();
+
+        switch (operatorString)
+        {
+            case "+":
+                Console.WriteLine(firstNumber + secondNumber);
+                break;
+            case "-":
+                Console.WriteLine(firstNumber - secondNumber);
+                break;
+            case "*":
+                Console.WriteLine(firstNumber * secondNumber);
+                break;
+            case "/":
+                if (secondNumber == 0)
+                {
+                    Console.WriteLine("Cannot divide by zero.");
+                }
+                else
+                {
+                    Console.WriteLine(firstNumber / secondNumber);
+                }
+                break;
+            case "%":
+                if (secondNumber == 0)
+                {
+                    Console.WriteLine("Cannot modolue by zero.");
+                }
+                else
+                {
+                    Console.WriteLine(firstNumber % secondNumber);
+                }
+                break;
+            default:
+                Console.WriteLine("Invalid operator.");
                 break;
         }
 
