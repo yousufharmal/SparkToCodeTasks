@@ -14,7 +14,7 @@ class Program
             Console.WriteLine(i);
         }
         Console.WriteLine("Liftoff!");
-        */
+        
         
         // Task 2 - Sum of Numbers 1 to N
         Console.Write("Enter a positive whole number: ");
@@ -29,5 +29,16 @@ class Program
         }
 
         Console.WriteLine("The sum is: " + sum);
+        */
+        
+        // Task 3 - Multiplication Table
+        Console.Write("Please enter a number: ");
+        int number = int.Parse(Console.ReadLine());
+
+       
+        for (int i =1; i<=10; i++)
+        {
+            Console.WriteLine(number + " x " + i + " = " + number*i);
+        }
     }
 }
