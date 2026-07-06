@@ -29,7 +29,7 @@ class Program
         }
 
         Console.WriteLine("The sum is: " + sum);
-        */
+        
         
         // Task 3 - Multiplication Table
         Console.Write("Please enter a number: ");
@@ -40,5 +40,25 @@ class Program
         {
             Console.WriteLine(number + " x " + i + " = " + number*i);
         }
+        
+        */
+        
+        // Task 4 - Password Retry
+
+        string correctPassword = "Spark2026";
+        string password = "";
+
+        while (password != correctPassword)
+        {
+            Console.Write("Enter the password: ");
+            password = Console.ReadLine();
+
+            if (password != correctPassword)
+            {
+                Console.WriteLine("Incorrect password, try again");
+            }
+        }
+
+        Console.WriteLine("Access Granted");
     }
 }
