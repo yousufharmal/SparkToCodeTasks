@@ -41,7 +41,7 @@ class Program
             Console.WriteLine(number + " x " + i + " = " + number*i);
         }
         
-        */
+        
         
         // Task 4 - Password Retry
 
@@ -60,5 +60,37 @@ class Program
         }
 
         Console.WriteLine("Access Granted");
+        
+        */
+        
+        // Task 5 - Number Guessing Game
+
+        int secretNumber = 78;
+        int guess;
+        int attempts = 0;
+
+        do
+        {
+            Console.Write("Guess the secret number: ");
+            guess = int.Parse(Console.ReadLine());
+
+            attempts++;
+
+            if (guess > secretNumber)
+            {
+                Console.WriteLine("Too high");
+            }
+            else if (guess < secretNumber)
+            {
+                Console.WriteLine("Too low");
+            }
+            else
+            {
+                Console.WriteLine("Correct!");
+            }
+
+        } while (guess != secretNumber);
+
+        Console.WriteLine("You guessed the number in " + attempts + " attempts.");
     }
 }
