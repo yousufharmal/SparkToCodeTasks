@@ -162,7 +162,7 @@ class Program
 
 
         }
-        */
+        
         
         // Task 8 - Sum of Even Numbers Only
         
@@ -178,6 +178,41 @@ class Program
             }
         }
         Console.WriteLine("The sum of the even numbers = " + sum);
+        
+        */
+        
+        // Task 9 - Validated Positive Number Input
+        
+        int number = 0;
+
+        do
+        {
+            try
+            {
+                Console.Write("Enter a positive whole number: ");
+                number = int.Parse(Console.ReadLine());
+
+                if (number <= 0)
+                {
+                    Console.WriteLine("Please enter a positive whole number.");
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a whole number.");
+                number = 0; 
+            }
+
+        } while (number <= 0);
+
+        int sum = 0;
+
+        for (int i = 1; i <= number; i++)
+        {
+            sum += i;
+        }
+
+        Console.WriteLine("The sum is: " + sum);
         
         
     }
