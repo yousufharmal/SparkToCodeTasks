@@ -61,7 +61,7 @@ class Program
 
         Console.WriteLine("Access Granted");
         
-        */
+        
         
         // Task 5 - Number Guessing Game
 
@@ -92,5 +92,30 @@ class Program
         } while (guess != secretNumber);
 
         Console.WriteLine("You guessed the number in " + attempts + " attempts.");
+        
+        */
+        
+        // Task 6 - Safe Division Calculator
+        
+        try
+        {
+            Console.Write("Enter the first whole number: ");
+            int firstNumber = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the second whole number: ");
+            int secondNumber = int.Parse(Console.ReadLine());
+
+            int result = firstNumber / secondNumber;
+
+            Console.WriteLine("Result: " + result);
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("You cannot divide by zero.");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Please enter valid numbers.");
+        }
     }
 }
