@@ -118,7 +118,7 @@ class Program
             Console.WriteLine("Please enter valid numbers.");
         }
 
-        */
+        
 
         // Task 7 - Repeating Menu with Exit Option
 
@@ -162,5 +162,23 @@ class Program
 
 
         }
+        */
+        
+        // Task 8 - Sum of Even Numbers Only
+        
+        Console.Write("Please enter a whole positive number: ");
+        int number = Convert.ToInt32(Console.ReadLine());
+        
+        int sum = 0;
+        for (int i = 1; i <= number; i++)
+        {
+            if (i % 2 == 0)
+            {
+                sum += i;
+            }
+        }
+        Console.WriteLine("The sum of the even numbers = " + sum);
+        
+        
     }
 }   
