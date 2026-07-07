@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         // Task 1 - Countdown Timer
-        
+
         /*
         Console.Write("Please enter a number :");
         int n = Convert.ToInt32(Console.ReadLine());
@@ -14,13 +14,13 @@ class Program
             Console.WriteLine(i);
         }
         Console.WriteLine("Liftoff!");
-        
-        
+
+
         // Task 2 - Sum of Numbers 1 to N
         Console.Write("Enter a positive whole number: ");
         int number = int.Parse(Console.ReadLine());
-        
-        
+
+
         int sum = 0;
 
         for (int i = 1; i <= number; i++)
@@ -29,20 +29,20 @@ class Program
         }
 
         Console.WriteLine("The sum is: " + sum);
-        
-        
+
+
         // Task 3 - Multiplication Table
         Console.Write("Please enter a number: ");
         int number = int.Parse(Console.ReadLine());
 
-       
+
         for (int i =1; i<=10; i++)
         {
             Console.WriteLine(number + " x " + i + " = " + number*i);
         }
-        
-        */
-        
+
+
+
         // Task 4 - Password Retry
 
         string correctPassword = "Spark2026";
@@ -60,5 +60,160 @@ class Program
         }
 
         Console.WriteLine("Access Granted");
+
+
+
+        // Task 5 - Number Guessing Game
+
+        int secretNumber = 78;
+        int guess;
+        int attempts = 0;
+
+        do
+        {
+            Console.Write("Guess the secret number: ");
+            guess = int.Parse(Console.ReadLine());
+
+            attempts++;
+
+            if (guess > secretNumber)
+            {
+                Console.WriteLine("Too high");
+            }
+            else if (guess < secretNumber)
+            {
+                Console.WriteLine("Too low");
+            }
+            else
+            {
+                Console.WriteLine("Correct!");
+            }
+
+        } while (guess != secretNumber);
+
+        Console.WriteLine("You guessed the number in " + attempts + " attempts.");
+
+
+
+        // Task 6 - Safe Division Calculator
+
+        try
+        {
+            Console.Write("Enter the first whole number: ");
+            int firstNumber = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the second whole number: ");
+            int secondNumber = int.Parse(Console.ReadLine());
+
+            int result = firstNumber / secondNumber;
+
+            Console.WriteLine("Result: " + result);
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("You cannot divide by zero.");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Please enter valid numbers.");
+        }
+
+        
+
+        // Task 7 - Repeating Menu with Exit Option
+
+        int choice = 0;
+
+        while (choice != 3)
+        {
+            Console.WriteLine("\nMenu");
+            Console.WriteLine("1. Say Hello");
+            Console.WriteLine("2. Show Current Time-of-day Greeting");
+            Console.WriteLine("3. Exit");
+            Console.Write("Enter your choice: ");
+
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Hello!");
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Good Afternoon!");
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Goodbye!");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: Please enter a valid number.");
+            }
+
+
+        }
+        
+        
+        // Task 8 - Sum of Even Numbers Only
+        
+        Console.Write("Please enter a whole positive number: ");
+        int number = Convert.ToInt32(Console.ReadLine());
+        
+        int sum = 0;
+        for (int i = 1; i <= number; i++)
+        {
+            if (i % 2 == 0)
+            {
+                sum += i;
+            }
+        }
+        Console.WriteLine("The sum of the even numbers = " + sum);
+        
+        */
+        
+        // Task 9 - Validated Positive Number Input
+        
+        int number = 0;
+
+        do
+        {
+            try
+            {
+                Console.Write("Enter a positive whole number: ");
+                number = int.Parse(Console.ReadLine());
+
+                if (number <= 0)
+                {
+                    Console.WriteLine("Please enter a positive whole number.");
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a whole number.");
+                number = 0; 
+            }
+
+        } while (number <= 0);
+
+        int sum = 0;
+
+        for (int i = 1; i <= number; i++)
+        {
+            sum += i;
+        }
+
+        Console.WriteLine("The sum is: " + sum);
+        
+        
     }
-}
+}   
