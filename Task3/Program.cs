@@ -19,7 +19,7 @@ class Program
         Console.WriteLine("Your final positive difference is: " + absoulute);
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 2 - Power & Root Explorer //////////////
         
@@ -31,6 +31,20 @@ class Program
         
         Console.WriteLine("The power of 2 of your number = " + power);
         Console.WriteLine("The square root of your number = " + sqrt);
+        
+        
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 3 - Name Formatter //////////////
+        
+        Console.WriteLine("Please enter your full name: ");
+        string fullName = Console.ReadLine();
+        
+        Console.WriteLine("Your full name in capital letters: " + fullName.ToUpper());
+        Console.WriteLine("Your full name in small letters: " + fullName.ToLower());
+        Console.WriteLine($"Your name contains {fullName.Length} letters" );
+
         
     }
 }
