@@ -135,7 +135,7 @@ class Program
         }
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 8 - Membership Expiry Checker //////////////
         
@@ -165,5 +165,21 @@ class Program
         {
             Console.WriteLine("Invalid input. Please enter a valid date and number.");
         }
+        
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 9 - Round Up / Round Down Explorer //////////////
+        
+        Console.Write("Enter a decimal number: ");
+        double number = double.Parse(Console.ReadLine());
+
+        double rounded = Math.Round(number);
+        double roundedUp = Math.Ceiling(number);
+        double roundedDown = Math.Floor(number);
+
+        Console.WriteLine($"Nearest whole number: {rounded}");
+        Console.WriteLine($"Always rounded up:    {roundedUp}");
+        Console.WriteLine($"Always rounded down:  {roundedDown}");
     }
 }
