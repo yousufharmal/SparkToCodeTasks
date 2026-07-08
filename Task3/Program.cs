@@ -46,7 +46,7 @@ class Program
         Console.WriteLine($"Your name contains {fullName.Length} letters" );
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 4 - Subscription End Date //////////////
         
@@ -57,6 +57,27 @@ class Program
         DateTime endDate = startDate.AddDays(trialDays);
 
         Console.WriteLine("The trial ends on: " + endDate.ToString("yyyy-MM-dd"));
+        
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 4 - Subscription End Date //////////////
+        
+        Console.Write("Enter your raw exam score as decimal: ");
+        double rawScore = double.Parse(Console.ReadLine());
+        
+        double roundedScore = Math.Round(rawScore, 0);
+
+        if (roundedScore >= 60)
+        {
+            Console.WriteLine("Congrats! You have passed ");
+        }
+        else
+        {
+            Console.WriteLine("Sorry, you do not pass ");
+        }
+        
+        Console.WriteLine("Your rounded score is " + roundedScore);
 
         
     }
