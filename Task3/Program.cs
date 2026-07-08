@@ -183,7 +183,7 @@ class Program
         Console.WriteLine($"Always rounded down:  {roundedDown}");
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 10 - Word Position Finder //////////////
         
@@ -204,6 +204,51 @@ class Program
         {
             Console.WriteLine($"First occurrence: {firstPosition}");
             Console.WriteLine($"Last occurrence: {lastPosition}");
+        }
+        
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 11 - One-Time Password (OTP) Generator //////////////
+        
+        Random rng = new Random();
+        int otp = rng.Next(1000, 10000); // 1000–9999 inclusive
+
+        Console.WriteLine($"Your OTP code is: {otp}");
+        
+
+        int maxAttempts = 3;
+        bool verified = false;
+
+        for (int attempt = 1; attempt <= maxAttempts; attempt++)
+        {
+            Console.Write($"Enter the code (attempt {attempt} of {maxAttempts}): ");
+            string input = Console.ReadLine();
+
+            try
+            {
+                int enteredCode = int.Parse(input);
+
+                if (enteredCode == otp)
+                {
+                    Console.WriteLine("Verified");
+                    verified = true;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect code.");
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("That's not a valid number. Try again.");
+            }
+        }
+
+        if (!verified)
+        {
+            Console.WriteLine("Verification Failed");
         }
     }
 }
