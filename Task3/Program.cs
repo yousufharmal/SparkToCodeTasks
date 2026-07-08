@@ -1,4 +1,6 @@
-﻿namespace Task3;
+﻿using System.Security.Cryptography;
+
+namespace Task3;
 
 class Program
 {
@@ -59,9 +61,9 @@ class Program
         Console.WriteLine("The trial ends on: " + endDate.ToString("yyyy-MM-dd"));
         
         /////////////////////////////////////////////////
-        */
         
-        // Task 4 - Subscription End Date //////////////
+        
+        // Task 5 - Grade Rounding System //////////////
         
         Console.Write("Enter your raw exam score as decimal: ");
         double rawScore = double.Parse(Console.ReadLine());
@@ -78,7 +80,39 @@ class Program
         }
         
         Console.WriteLine("Your rounded score is " + roundedScore);
-
         
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 6 - Password Strength Checker //////////////
+        
+        string password;
+        bool validPassword;
+
+        do
+        {
+            Console.Write("Enter a password: ");
+            password = Console.ReadLine();
+
+            validPassword =
+                password.Length >= 8 &&
+                !password.ToLower().Contains("password");
+
+            if (validPassword)
+            {
+                Console.WriteLine("Strong");
+            }
+            else
+            {
+                Console.WriteLine("Weak");
+
+                if (password.Length < 8)
+                    Console.WriteLine("- Password must be at least 8 characters long.");
+
+                if (password.ToLower().Contains("password"))
+                    Console.WriteLine("- Password must not contain the word \"password\".");
+            }
+
+        } while (!validPassword);
     }
 }
