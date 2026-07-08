@@ -167,7 +167,7 @@ class Program
         }
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 9 - Round Up / Round Down Explorer //////////////
         
@@ -181,5 +181,29 @@ class Program
         Console.WriteLine($"Nearest whole number: {rounded}");
         Console.WriteLine($"Always rounded up:    {roundedUp}");
         Console.WriteLine($"Always rounded down:  {roundedDown}");
+        
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 10 - Word Position Finder //////////////
+        
+        Console.Write("Enter a sentence: ");
+        string sentence = Console.ReadLine();
+
+        Console.Write("Enter a word to search for: ");
+        string word = Console.ReadLine();
+
+        int firstPosition = sentence.ToLower().IndexOf(word.ToLower());
+        int lastPosition = sentence.ToLower().LastIndexOf(word.ToLower());
+
+        if (firstPosition == -1)
+        {
+            Console.WriteLine("The word was not found.");
+        }
+        else
+        {
+            Console.WriteLine($"First occurrence: {firstPosition}");
+            Console.WriteLine($"Last occurrence: {lastPosition}");
+        }
     }
 }
