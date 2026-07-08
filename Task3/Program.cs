@@ -116,7 +116,7 @@ class Program
         } while (!validPassword);
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 7 - Clean Name Comparator //////////////
         
@@ -134,8 +134,36 @@ class Program
             Console.WriteLine("No match");
         }
         
+        /////////////////////////////////////////////////
+        */
         
+        // Task 8 - Membership Expiry Checker //////////////
         
-        
+        try
+        {
+            Console.Write("Enter the membership start date (yyyy-MM-dd): ");
+            DateTime startDate = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Enter the number of valid membership days: ");
+            int validDays = int.Parse(Console.ReadLine());
+
+            DateTime expiryDate = startDate.AddDays(validDays);
+
+            if (expiryDate >= DateTime.Today)
+            {
+                Console.WriteLine("Membership Status: Active");
+            }
+            else
+            {
+                Console.WriteLine("Membership Status: Expired");
+            }
+
+            Console.WriteLine("Expiry Date: " +
+                              expiryDate.ToString("yyyy-MM-dd"));
+        }
+        catch
+        {
+            Console.WriteLine("Invalid input. Please enter a valid date and number.");
+        }
     }
 }
