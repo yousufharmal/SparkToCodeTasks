@@ -82,7 +82,7 @@ class Program
         Console.WriteLine("Your rounded score is " + roundedScore);
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 6 - Password Strength Checker //////////////
         
@@ -114,5 +114,28 @@ class Program
             }
 
         } while (!validPassword);
+        
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 7 - Clean Name Comparator //////////////
+        
+        Console.WriteLine("Please enter your name: ");
+        string name = Console.ReadLine().Trim().ToLower();
+        Console.WriteLine("Please confirm your name again: ");
+        string nameConfirmed = Console.ReadLine().Trim().ToLower();
+
+        if (name == nameConfirmed)
+        {
+            Console.WriteLine("Match");
+        }
+        else
+        {
+            Console.WriteLine("No match");
+        }
+        
+        
+        
+        
     }
 }
