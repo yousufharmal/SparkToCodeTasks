@@ -34,7 +34,7 @@ class Program
         
         
         /////////////////////////////////////////////////
-        */
+        
         
         // Task 3 - Name Formatter //////////////
         
@@ -44,6 +44,19 @@ class Program
         Console.WriteLine("Your full name in capital letters: " + fullName.ToUpper());
         Console.WriteLine("Your full name in small letters: " + fullName.ToLower());
         Console.WriteLine($"Your name contains {fullName.Length} letters" );
+        
+        /////////////////////////////////////////////////
+        */
+        
+        // Task 4 - Subscription End Date //////////////
+        
+        Console.Write("Enter the number of days for the free trial: ");
+        int trialDays = int.Parse(Console.ReadLine());
+
+        DateTime startDate = DateTime.Today;
+        DateTime endDate = startDate.AddDays(trialDays);
+
+        Console.WriteLine("The trial ends on: " + endDate.ToString("yyyy-MM-dd"));
 
         
     }
