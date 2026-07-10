@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 2", "Task 2\Task 2.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3", "Task3\Task3.csproj", "{A901AEA6-ACBB-42A3-AD99-162C4A9062DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 4 - User Definef Functions", "Task 4 - User Definef Functions\Task 4 - User Definef Functions.csproj", "{284B0924-26B4-41AE-881B-79E234FE32FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{A901AEA6-ACBB-42A3-AD99-162C4A9062DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A901AEA6-ACBB-42A3-AD99-162C4A9062DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A901AEA6-ACBB-42A3-AD99-162C4A9062DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284B0924-26B4-41AE-881B-79E234FE32FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284B0924-26B4-41AE-881B-79E234FE32FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284B0924-26B4-41AE-881B-79E234FE32FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284B0924-26B4-41AE-881B-79E234FE32FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
