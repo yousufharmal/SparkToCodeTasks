@@ -39,6 +39,18 @@ class Program
     {
         return n % 2 == 0;
     }
+    
+    // Task 6 - Rectangle Area & Perimeter Functions
+
+    public static double CalculateArea(double n, double m)
+    {
+        return n * m;
+    }
+
+    public static double CalculatePerimeter(double n, double m)
+    {
+        return n * (m + 2);
+    }
     static void Main(string[] args)
     {
         // // Task 1 - Personalized Welcome Function
@@ -64,7 +76,7 @@ class Program
         
         // Task 4 - Fixed Menu Display Function
         DisplayMenu();
-        */
+        
         
         // Task 5 - Even or Odd Function
         
@@ -80,8 +92,22 @@ class Program
         {
             Console.WriteLine("The number is odd");
         }
+        */
         
+        // Task 6 - Rectangle Area & Perimeter Functions
+
+        Console.Write("Enter the lenght: ");
+        double lenght = double.Parse(Console.ReadLine());
+        Console.Write("Enter the width: ");
+        double width = double.Parse(Console.ReadLine());
+
+        double area = CalculateArea(lenght, width);
+        double perimeter = CalculatePerimeter(lenght, width);
         
+        Console.WriteLine("The area is: " + area);
+        Console.WriteLine("The perimeter is: " + perimeter);
         
+
+
     }
 }
