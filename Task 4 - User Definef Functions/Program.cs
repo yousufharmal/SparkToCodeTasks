@@ -32,6 +32,13 @@ class Program
         Console.WriteLine("2: Help");
         Console.WriteLine("3: Exit");
     }
+    
+    // Task 5 - Even or Odd Function
+
+    public static bool isEven(int n)
+    {
+        return n % 2 == 0;
+    }
     static void Main(string[] args)
     {
         // // Task 1 - Personalized Welcome Function
@@ -53,10 +60,27 @@ class Program
         Console.Write("Please enter the temperature in Celsius: ");
         double celsius = double.Parse(Console.ReadLine());
         Console.WriteLine($"The temperature in Fehrenheit is {CelsiusToFahrenheit(celsius)}");
-        */
+        
         
         // Task 4 - Fixed Menu Display Function
         DisplayMenu();
+        */
+        
+        // Task 5 - Even or Odd Function
+        
+        Console.Write("Enter a number: ");
+        int n = int.Parse(Console.ReadLine());
+        bool even = isEven(n);
+
+        if (even)
+        {
+            Console.WriteLine("The number is even");
+        }
+        else
+        {
+            Console.WriteLine("The number is odd");
+        }
+        
         
         
     }
