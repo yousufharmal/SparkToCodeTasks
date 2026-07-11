@@ -106,6 +106,13 @@ class Program
         return x * y * z;
     }
     
+    // Task 10 - Overloaded Area Calculator
+    
+    public static double CalculateArea(double n)
+    {
+        return n * n;
+    }
+     // The second function is already declared above ( line 45 )
     
     static void Main(string[] args)
     {
@@ -199,7 +206,7 @@ class Program
         
         Countdown(n);
         
-        */
+        
         
         // Task 9 - Overloaded Multiply Function
 
@@ -211,7 +218,83 @@ class Program
         Console.WriteLine("The second multiply function with 2 inputs and returning a double: " + m);
         Console.WriteLine("The third multiply function with 3 inputs and returning an integer: " + x);
 
+        */
+        
+        // Task 10 - Overloaded Area Calculator
+        bool validChoice = false;
 
+        while (!validChoice)
+        {
+            Console.Write("Choose a shape (1 = Square, 2 = Rectangle): ");
+
+            try
+            {
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        double side;
+                        while (true)
+                        {
+                            try
+                            {
+                                Console.Write("Enter the side length: ");
+                                side = double.Parse(Console.ReadLine());
+
+                                if (side > 0)
+                                    break;
+
+                                Console.WriteLine("Length must be positive.");
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Please enter a valid number.");
+                            }
+                        }
+
+                        Console.WriteLine($"Area = {CalculateArea(side)}");
+                        validChoice = true;
+                        break;
+
+                    case 2:
+                        double length, width;
+
+                        while (true)
+                        {
+                            try
+                            {
+                                Console.Write("Enter the length: ");
+                                length = double.Parse(Console.ReadLine());
+
+                                Console.Write("Enter the width: ");
+                                width = double.Parse(Console.ReadLine());
+
+                                if (length > 0 && width > 0)
+                                    break;
+
+                                Console.WriteLine("Both values must be positive.");
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Please enter valid numbers.");
+                            }
+                        }
+
+                        Console.WriteLine($"Area = {CalculateArea(length, width)}");
+                        validChoice = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter 1 or 2.");
+                        break;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter a whole number.");
+            }
+        }
 
     }
 }
