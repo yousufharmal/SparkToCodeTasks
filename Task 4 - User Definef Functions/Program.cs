@@ -77,6 +77,17 @@ class Program
             return "F";
         }
     }
+    
+    // Task 8 - Countdown Function
+
+    public static void Countdown(int number)
+    {
+        Console.WriteLine("Your countdown is starting");
+        for (int i = 1; i <= number; number--)
+        {
+            Console.WriteLine(number);
+        }
+    }
     static void Main(string[] args)
     {
         // // Task 1 - Personalized Welcome Function
@@ -133,7 +144,7 @@ class Program
         Console.WriteLine("The area is: " + area);
         Console.WriteLine("The perimeter is: " + perimeter);
         
-        */
+        
         
         // Task 7 - Grade Letter Function
         
@@ -159,6 +170,15 @@ class Program
         
         string letter = GetGradeLetter(grade);
         Console.WriteLine($"Grade letter: {letter}");
+        
+        */
+        
+        // Task 8 - Countdown Function
+        
+        Console.Write("Enter a number: ");
+        int n = int.Parse(Console.ReadLine());
+        
+        Countdown(n);
         
 
 
