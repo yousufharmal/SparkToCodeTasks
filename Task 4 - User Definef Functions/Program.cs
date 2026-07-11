@@ -51,6 +51,32 @@ class Program
     {
         return n * (m + 2);
     }
+    
+    // Task 7 - Grade Letter Function
+
+    public static string GetGradeLetter(int grade)
+    {
+        if (grade >= 80)
+        {
+            return "A";
+        }
+        else if (grade >= 70)
+        {
+            return "B";
+        }
+        else if (grade >= 60)
+        {
+            return "C";
+        }
+        else if (grade >= 50)
+        {
+            return "D";
+        }
+        else 
+        {
+            return "F";
+        }
+    }
     static void Main(string[] args)
     {
         // // Task 1 - Personalized Welcome Function
@@ -92,7 +118,7 @@ class Program
         {
             Console.WriteLine("The number is odd");
         }
-        */
+        
         
         // Task 6 - Rectangle Area & Perimeter Functions
 
@@ -106,6 +132,33 @@ class Program
         
         Console.WriteLine("The area is: " + area);
         Console.WriteLine("The perimeter is: " + perimeter);
+        
+        */
+        
+        // Task 7 - Grade Letter Function
+        
+        int grade = -1;
+
+        while (grade < 0 || grade > 100)
+        {
+            try
+            {
+                Console.Write("Enter a grade (0-100): ");
+                grade = int.Parse(Console.ReadLine());
+
+                if (grade < 0 || grade > 100)
+                {
+                    Console.WriteLine("Grade must be between 0 and 100.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Please enter a valid whole number.");
+            }
+        }
+        
+        string letter = GetGradeLetter(grade);
+        Console.WriteLine($"Grade letter: {letter}");
         
 
 
