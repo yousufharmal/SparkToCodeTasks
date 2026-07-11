@@ -88,6 +88,25 @@ class Program
             Console.WriteLine(number);
         }
     }
+    
+    // Task 9 - Overloaded Multiply Function
+
+    public static int Multiply(int x, int y)
+    {
+        return x * y;
+    }
+
+    public static double Multiply(double x, double y)
+    {
+        return x * y;
+    }
+    
+    public static int Multiply(int x, int y, int z)
+    {
+        return x * y * z;
+    }
+    
+    
     static void Main(string[] args)
     {
         // // Task 1 - Personalized Welcome Function
@@ -171,7 +190,7 @@ class Program
         string letter = GetGradeLetter(grade);
         Console.WriteLine($"Grade letter: {letter}");
         
-        */
+        
         
         // Task 8 - Countdown Function
         
@@ -180,6 +199,18 @@ class Program
         
         Countdown(n);
         
+        */
+        
+        // Task 9 - Overloaded Multiply Function
+
+        int n = Multiply(2, 3);
+        double m = Multiply(3.977, 4.985);
+        int x = Multiply(2, 3, 5);
+        
+        Console.WriteLine("The first multiply function with 2 inputs and returning an integer: " + n);
+        Console.WriteLine("The second multiply function with 2 inputs and returning a double: " + m);
+        Console.WriteLine("The third multiply function with 3 inputs and returning an integer: " + x);
+
 
 
     }
