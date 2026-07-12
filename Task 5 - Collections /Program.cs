@@ -52,7 +52,7 @@ class Program
             taskNumber++;
         }
         
-        */
+        
         
         // Task 3 - Browsing History Stack ///
         
@@ -80,6 +80,37 @@ class Program
         else
         {
             Console.WriteLine("No pages left in the browser history.");
+        }
+        
+        */
+        
+        // Task 4 - Customer Service Queue ///
+        
+        Queue<string> customers = new Queue<string>();
+
+        
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write($"Enter customer {i + 1}: ");
+            string name = Console.ReadLine();
+
+            
+            customers.Enqueue(name);
+        }
+
+        
+        string servedCustomer = customers.Dequeue();
+
+        Console.WriteLine($"\nServed customer: {servedCustomer}");
+
+        
+        if (customers.Count > 0)
+        {
+            Console.WriteLine($"Next customer: {customers.Peek()}");
+        }
+        else
+        {
+            Console.WriteLine("No customers left in the queue.");
         }
     }
 }
