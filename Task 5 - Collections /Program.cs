@@ -82,7 +82,7 @@ class Program
             Console.WriteLine("No pages left in the browser history.");
         }
         
-        */
+        
         
         // Task 4 - Customer Service Queue ///
         
@@ -112,5 +112,37 @@ class Program
         {
             Console.WriteLine("No customers left in the queue.");
         }
+        
+        */
+        
+        // Task 5 - Array Grade Range ///
+        
+        int[] grades = new int[5];
+        int sum = 0;
+
+        
+        for (int i = 0; i < grades.Length; i++)
+        {
+            Console.Write($"Enter grade {i + 1}: ");
+            grades[i] = Convert.ToInt32(Console.ReadLine());
+        }
+
+        
+        Array.Sort(grades);
+
+        
+        foreach (int grade in grades)
+        {
+            sum += grade;
+        }
+
+        
+        double average = (double)sum / grades.Length;
+
+        
+        Console.WriteLine("\nResults:");
+        Console.WriteLine($"Lowest grade: {grades[0]}");
+        Console.WriteLine($"Highest grade: {grades[grades.Length - 1]}");
+        Console.WriteLine($"Average grade: {average:F2}");
     }
 }
