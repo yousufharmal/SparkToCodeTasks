@@ -145,7 +145,7 @@ class Program
         Console.WriteLine($"Highest grade: {grades[grades.Length - 1]}");
         Console.WriteLine($"Average grade: {average:F2}");
         
-        */
+        
         
         // Task 6 - Filtered Shopping List ///
         
@@ -185,5 +185,31 @@ class Program
         {
             Console.WriteLine("- " + shoppingItem);
         }
+        
+        */
+        
+        // Task 7 - High Score Podium ///
+        
+       
+        List<int> scores = new List<int>();
+
+        
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write($"Enter score {i + 1}: ");
+            scores.Add(Convert.ToInt32(Console.ReadLine()));
+        }
+
+        
+        scores.Sort();
+
+        
+        scores.Reverse();
+
+        
+        Console.WriteLine("\nHigh Score Podium:");
+        Console.WriteLine($"1st place: {scores[0]}");
+        Console.WriteLine($"2nd place: {scores[1]}");
+        Console.WriteLine($"3rd place: {scores[2]}");
     }
 }
