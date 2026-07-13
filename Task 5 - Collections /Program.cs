@@ -113,7 +113,7 @@ class Program
             Console.WriteLine("No customers left in the queue.");
         }
         
-        */
+        
         
         // Task 5 - Array Grade Range ///
         
@@ -144,5 +144,46 @@ class Program
         Console.WriteLine($"Lowest grade: {grades[0]}");
         Console.WriteLine($"Highest grade: {grades[grades.Length - 1]}");
         Console.WriteLine($"Average grade: {average:F2}");
+        
+        */
+        
+        // Task 6 - Filtered Shopping List ///
+        
+        List<string> shoppingList = new List<string>();
+
+        
+        string item = "";
+
+        while (item.ToLower() != "done")
+        {
+            Console.Write("Enter an item (or type 'done' to finish): ");
+            item = Console.ReadLine();
+
+            if (item.ToLower() != "done")
+            {
+                shoppingList.Add(item);
+            }
+        }
+
+        
+        Console.WriteLine("\nShopping List:");
+        foreach (string shoppingItem in shoppingList)
+        {
+            Console.WriteLine("- " + shoppingItem);
+        }
+
+        
+        Console.Write("\nEnter an item to remove: ");
+        string removeItem = Console.ReadLine();
+
+        
+        shoppingList.Remove(removeItem);
+
+        
+        Console.WriteLine("\nShopping List After Removal:");
+        foreach (string shoppingItem in shoppingList)
+        {
+            Console.WriteLine("- " + shoppingItem);
+        }
     }
 }
