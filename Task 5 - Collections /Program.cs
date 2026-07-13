@@ -1,0 +1,313 @@
+﻿namespace Task_5___Collections;
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    
+    static double CalculateAverage(List<int> grades)
+    {
+        int sum = 0;
+
+        foreach (int grade in grades)
+        {
+            sum += grade;
+        }
+
+        return (double)sum / grades.Count;
+    }
+
+    
+    static int FindFirstFailing(List<int> grades)
+    {
+        return grades.Find(x => x < 60);
+    }
+    static void Main(string[] args)
+    {
+
+        // Task 1 - Fixed Grades Array ///
+        /*
+        int[] grades = new int[5];
+
+
+        for (int i = 0; i < grades.Length; i++)
+        {
+            Console.Write("Enter grade " + (i + 1) + ": ");
+            grades[i] = Convert.ToInt32(Console.ReadLine());
+        }
+
+
+        Console.WriteLine("\nStudent Grades:");
+        foreach (int grade in grades)
+        {
+            Console.WriteLine(grade);
+        }
+
+
+
+        // Task 2 - Dynamic To-Do List ///
+
+        List<string> todoList = new List<string>();
+
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write($"Enter task {i + 1}: ");
+            string task = Console.ReadLine();
+
+
+            todoList.Add(task);
+        }
+
+
+        Console.WriteLine("\nTo-Do List:");
+        int taskNumber = 1;
+
+        foreach (string task in todoList)
+        {
+            Console.WriteLine($"{taskNumber}. {task}");
+            taskNumber++;
+        }
+
+
+
+        // Task 3 - Browsing History Stack ///
+
+        Stack<string> history = new Stack<string>();
+
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write($"Enter website URL {i + 1}: ");
+            string url = Console.ReadLine();
+
+
+            history.Push(url);
+        }
+
+
+        string closedPage = history.Pop();
+
+        Console.WriteLine($"\nYou left: {closedPage}");
+
+        if (history.Count > 0)
+        {
+            Console.WriteLine($"You are now on: {history.Peek()}");
+        }
+        else
+        {
+            Console.WriteLine("No pages left in the browser history.");
+        }
+
+
+
+        // Task 4 - Customer Service Queue ///
+
+        Queue<string> customers = new Queue<string>();
+
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write($"Enter customer {i + 1}: ");
+            string name = Console.ReadLine();
+
+
+            customers.Enqueue(name);
+        }
+
+
+        string servedCustomer = customers.Dequeue();
+
+        Console.WriteLine($"\nServed customer: {servedCustomer}");
+
+
+        if (customers.Count > 0)
+        {
+            Console.WriteLine($"Next customer: {customers.Peek()}");
+        }
+        else
+        {
+            Console.WriteLine("No customers left in the queue.");
+        }
+
+
+
+        // Task 5 - Array Grade Range ///
+
+        int[] grades = new int[5];
+        int sum = 0;
+
+
+        for (int i = 0; i < grades.Length; i++)
+        {
+            Console.Write($"Enter grade {i + 1}: ");
+            grades[i] = Convert.ToInt32(Console.ReadLine());
+        }
+
+
+        Array.Sort(grades);
+
+
+        foreach (int grade in grades)
+        {
+            sum += grade;
+        }
+
+
+        double average = (double)sum / grades.Length;
+
+
+        Console.WriteLine("\nResults:");
+        Console.WriteLine($"Lowest grade: {grades[0]}");
+        Console.WriteLine($"Highest grade: {grades[grades.Length - 1]}");
+        Console.WriteLine($"Average grade: {average:F2}");
+
+
+
+        // Task 6 - Filtered Shopping List ///
+
+        List<string> shoppingList = new List<string>();
+
+
+        string item = "";
+
+        while (item.ToLower() != "done")
+        {
+            Console.Write("Enter an item (or type 'done' to finish): ");
+            item = Console.ReadLine();
+
+            if (item.ToLower() != "done")
+            {
+                shoppingList.Add(item);
+            }
+        }
+
+
+        Console.WriteLine("\nShopping List:");
+        foreach (string shoppingItem in shoppingList)
+        {
+            Console.WriteLine("- " + shoppingItem);
+        }
+
+
+        Console.Write("\nEnter an item to remove: ");
+        string removeItem = Console.ReadLine();
+
+
+        shoppingList.Remove(removeItem);
+
+
+        Console.WriteLine("\nShopping List After Removal:");
+        foreach (string shoppingItem in shoppingList)
+        {
+            Console.WriteLine("- " + shoppingItem);
+        }
+
+
+
+        // Task 7 - High Score Podium ///
+
+
+        List<int> scores = new List<int>();
+
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write($"Enter score {i + 1}: ");
+            scores.Add(Convert.ToInt32(Console.ReadLine()));
+        }
+
+
+        scores.Sort();
+
+
+        scores.Reverse();
+
+
+        Console.WriteLine("\nHigh Score Podium:");
+        Console.WriteLine($"1st place: {scores[0]}");
+        Console.WriteLine($"2nd place: {scores[1]}");
+        Console.WriteLine($"3rd place: {scores[2]}");
+
+        
+
+        // Task 8 - Undo Last Action ///
+        
+        Stack<string> actions = new Stack<string>();
+
+         
+        string action = "";
+
+        while (action.ToLower() != "stop")
+        {
+            Console.Write("Enter an action (or type 'stop' to finish): ");
+            action = Console.ReadLine();
+
+            if (action.ToLower() != "stop")
+            {
+                actions.Push(action);
+            }
+        }
+
+        
+        if (actions.Count > 0)
+        {
+            Console.WriteLine($"\nUndo 1: {actions.Pop()}");
+        }
+
+        if (actions.Count > 0)
+        {
+            Console.WriteLine($"Undo 2: {actions.Pop()}");
+        }
+
+       
+        Console.WriteLine("\nRemaining actions in the stack:");
+
+        if (actions.Count == 0)
+        {
+            Console.WriteLine("The stack is empty.");
+        }
+        else
+        {
+            foreach (string remainingAction in actions)
+            {
+                Console.WriteLine("- " + remainingAction);
+            }
+        }
+        
+        */
+
+        // Task 9 - Grade Analyzer with Functions ///
+        
+        List<int> grades = new List<int>();
+
+        // Ask the user how many grades they want to enter
+        Console.Write("How many grades would you like to enter? ");
+        int numberOfGrades = Convert.ToInt32(Console.ReadLine());
+
+        // Read the grades
+        for (int i = 0; i < numberOfGrades; i++)
+        {
+            Console.Write($"Enter grade {i + 1}: ");
+            grades.Add(Convert.ToInt32(Console.ReadLine()));
+        }
+
+        // Call the functions
+        double average = CalculateAverage(grades);
+        int firstFailing = FindFirstFailing(grades);
+
+        // Print the results
+        Console.WriteLine($"\nAverage grade: {average:F2}");
+
+        if (firstFailing == 0)
+        {
+            Console.WriteLine("No failing grades were found.");
+        }
+        else
+        {
+            Console.WriteLine($"First failing grade: {firstFailing}");
+        }
+
+    }
+}
