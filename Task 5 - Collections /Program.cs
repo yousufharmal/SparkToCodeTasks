@@ -5,6 +5,24 @@ using System.Collections.Generic;
 
 class Program
 {
+    
+    static double CalculateAverage(List<int> grades)
+    {
+        int sum = 0;
+
+        foreach (int grade in grades)
+        {
+            sum += grade;
+        }
+
+        return (double)sum / grades.Count;
+    }
+
+    
+    static int FindFirstFailing(List<int> grades)
+    {
+        return grades.Find(x => x < 60);
+    }
     static void Main(string[] args)
     {
 
@@ -212,7 +230,7 @@ class Program
         Console.WriteLine($"2nd place: {scores[1]}");
         Console.WriteLine($"3rd place: {scores[2]}");
 
-        */
+        
 
         // Task 8 - Undo Last Action ///
         
@@ -256,6 +274,39 @@ class Program
             {
                 Console.WriteLine("- " + remainingAction);
             }
+        }
+        
+        */
+
+        // Task 9 - Grade Analyzer with Functions ///
+        
+        List<int> grades = new List<int>();
+
+        // Ask the user how many grades they want to enter
+        Console.Write("How many grades would you like to enter? ");
+        int numberOfGrades = Convert.ToInt32(Console.ReadLine());
+
+        // Read the grades
+        for (int i = 0; i < numberOfGrades; i++)
+        {
+            Console.Write($"Enter grade {i + 1}: ");
+            grades.Add(Convert.ToInt32(Console.ReadLine()));
+        }
+
+        // Call the functions
+        double average = CalculateAverage(grades);
+        int firstFailing = FindFirstFailing(grades);
+
+        // Print the results
+        Console.WriteLine($"\nAverage grade: {average:F2}");
+
+        if (firstFailing == 0)
+        {
+            Console.WriteLine("No failing grades were found.");
+        }
+        else
+        {
+            Console.WriteLine($"First failing grade: {firstFailing}");
         }
 
     }
