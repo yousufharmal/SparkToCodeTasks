@@ -153,7 +153,36 @@ namespace BankingSystemApp
 
         static void DepositMoney()
         {
-            // TODO: implement this service (see Section 3 requirements)
+            Console.Write("Enter account number: ");
+            string accNum = Console.ReadLine();
+ 
+            int index = accountNumbers.IndexOf(accNum);
+            if (index == -1)
+            {
+                Console.WriteLine($"Error: account number '{accNum}' not found.");
+                return;
+            }
+ 
+            double amount;
+            Console.Write("Enter deposit amount: ");
+            try
+            {
+                amount = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error: deposit amount must be a valid number.");
+                return;
+            }
+ 
+            if (amount <= 0)
+            {
+                Console.WriteLine("Error: deposit amount must be positive.");
+                return;
+            }
+ 
+            balances[index] += amount;
+            Console.WriteLine($"Deposit successful. New balance for {customerNames[index]} ({accNum}): {FormatOMR(balances[index])}");
         }
 
         static void WithdrawMoney()
