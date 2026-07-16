@@ -129,7 +129,7 @@ namespace BankingSystemApp
             accountNumbers.Add(accNum);
             balances.Add(initialDeposit);
 
-            Console.WriteLine($"Account created! Customer: {name}, Account #: {accNum}, Balance: {initialDeposit:C}");
+            Console.WriteLine($"Account created! Customer: {name}, Account #: {accNum}, Balance: {FormatOMR(initialDeposit)}");
         }
 
         // Helper: checks that every character in the string is a digit 0-9.
@@ -187,7 +187,46 @@ namespace BankingSystemApp
 
         static void WithdrawMoney()
         {
-            // TODO: implement this service (see Section 3 requirements)
+            Console.Write("Enter account number: ");
+            string accNum = Console.ReadLine();
+ 
+            int index = accountNumbers.IndexOf(accNum);
+            if (index == -1)
+            {
+                Console.WriteLine($"Error: account number '{accNum}' not found.");
+                return;
+            }
+            
+            double withdrawAmount;
+            Console.Write("Enter withdraw amount: ");
+            
+            try
+            {
+                withdrawAmount = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error: withdraw amount must be a valid number.");
+                return;
+            }
+ 
+            if (withdrawAmount <= 0)
+            {
+                Console.WriteLine("Error: withdraw amount must be positive.");
+                return;
+            }
+
+            if (withdrawAmount > balances[index])
+            {
+                Console.WriteLine("Error: You don't have enough money.");
+                return;
+            }
+            
+            balances[index] -= withdrawAmount;
+            Console.WriteLine($" Withdraw successful. New balance for {customerNames[index]} ({accNum}): {FormatOMR(balances[index])}");
+            
+            
+            
         }
 
         static void ShowBalance()
