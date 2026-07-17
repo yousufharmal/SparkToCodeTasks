@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BankingSystemApp
+namespace BankingSystemApplication
 {
     internal class Program
     {
@@ -129,7 +129,8 @@ namespace BankingSystemApp
             accountNumbers.Add(accNum);
             balances.Add(initialDeposit);
 
-            Console.WriteLine($"Account created! Customer: {name}, Account #: {accNum}, Balance: {FormatOMR(initialDeposit)}");
+            Console.WriteLine(
+                $"Account created! Customer: {name}, Account #: {accNum}, Balance: {FormatOMR(initialDeposit)}");
         }
 
         // Helper: checks that every character in the string is a digit 0-9.
@@ -142,27 +143,29 @@ namespace BankingSystemApp
                     return false;
                 }
             }
+
             return true;
         }
+
         // Helper method for formatting the balance  
         static string FormatOMR(double amount)
         {
             return $"{amount:N3} OMR";
         }
-    
+
 
         static void DepositMoney()
         {
             Console.Write("Enter account number: ");
             string accNum = Console.ReadLine();
- 
+
             int index = accountNumbers.IndexOf(accNum);
             if (index == -1)
             {
                 Console.WriteLine($"Error: account number '{accNum}' not found.");
                 return;
             }
- 
+
             double amount;
             Console.Write("Enter deposit amount: ");
             try
@@ -174,32 +177,33 @@ namespace BankingSystemApp
                 Console.WriteLine("Error: deposit amount must be a valid number.");
                 return;
             }
- 
+
             if (amount <= 0)
             {
                 Console.WriteLine("Error: deposit amount must be positive.");
                 return;
             }
- 
+
             balances[index] += amount;
-            Console.WriteLine($"Deposit successful. New balance for {customerNames[index]} ({accNum}): {FormatOMR(balances[index])}");
+            Console.WriteLine(
+                $"Deposit successful. New balance for {customerNames[index]} ({accNum}): {FormatOMR(balances[index])}");
         }
 
         static void WithdrawMoney()
         {
             Console.Write("Enter account number: ");
             string accNum = Console.ReadLine();
- 
+
             int index = accountNumbers.IndexOf(accNum);
             if (index == -1)
             {
                 Console.WriteLine($"Error: account number '{accNum}' not found.");
                 return;
             }
-            
+
             double withdrawAmount;
             Console.Write("Enter withdraw amount: ");
-            
+
             try
             {
                 withdrawAmount = double.Parse(Console.ReadLine());
@@ -209,7 +213,7 @@ namespace BankingSystemApp
                 Console.WriteLine("Error: withdraw amount must be a valid number.");
                 return;
             }
- 
+
             if (withdrawAmount <= 0)
             {
                 Console.WriteLine("Error: withdraw amount must be positive.");
@@ -221,12 +225,12 @@ namespace BankingSystemApp
                 Console.WriteLine("Error: You don't have enough money.");
                 return;
             }
-            
+
             balances[index] -= withdrawAmount;
             Console.WriteLine($" Withdraw successful. New balance for {customerNames[index]} ({accNum}): {FormatOMR(balances[index])}");
-            
-            
-            
+
+
+
         }
 
         static void ShowBalance()
@@ -249,15 +253,67 @@ namespace BankingSystemApp
 
 
             Console.WriteLine($"The balance for  {customerNames[index]} ({accNum}): {FormatOMR(balances[index])}");
-            
+
         }
 
         static void TransferAmount()
         {
-            // TODO: implement this service (see Section 3 requirements)
-        }
+            Console.Write("Enter sender's account number: ");
+            string senderAccNum = Console.ReadLine();
+            int index1 = accountNumbers.IndexOf(senderAccNum);
 
-        // TODO: write two more void, no-parameter functions here for
-        // your own custom services (option 6 and option 7)
+            Console.Write("Enter receiver's account number: ");
+            string receiverAccNum = Console.ReadLine();
+            int index2 = accountNumbers.IndexOf(receiverAccNum);
+            
+            if (index1 == -1)
+            {
+                Console.WriteLine($"Error: account number '{senderAccNum}' not found.");
+                return;
+            }
+
+            if (index2 == -1)
+            {
+                Console.WriteLine($"Error: account number '{receiverAccNum}' not found.");
+                return;
+            }
+            
+            Console.Write("Please enter the amount you want to transfer: ");
+            double amount;
+            try
+            {
+                 amount = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error: amount must be a valid number.");
+                return;
+            }
+
+            if (amount > balances[index1])
+            {
+                Console.WriteLine("Error: You don't have enough money.");
+                return;
+            }
+            
+            if (amount <= 0)
+            {
+                Console.WriteLine("Error: transfer amount must be positive.");
+                return;
+            }
+            
+            balances[index1] -= amount;
+            balances[index2] += amount;
+            
+            Console.WriteLine("Transfer Successful!");
+            Console.WriteLine($"New balance for sender ({customerNames[index1]}) ({senderAccNum}): {FormatOMR(balances[index1])}");
+            Console.WriteLine($"New balance for receiver ({customerNames[index2]}) ({receiverAccNum}): {FormatOMR(balances[index2])}");
+            
+
+            
+
+            // TODO: write two more void, no-parameter functions here for
+            // your own custom services (option 6 and option 7)
+        }
     }
 }
