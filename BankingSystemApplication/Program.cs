@@ -231,7 +231,25 @@ namespace BankingSystemApp
 
         static void ShowBalance()
         {
-            // TODO: implement this service (see Section 3 requirements)
+            int index;
+            string accNum;
+
+            do
+            {
+                Console.Write("Enter account number: ");
+                accNum = Console.ReadLine();
+
+                index = accountNumbers.IndexOf(accNum);
+                if (index == -1)
+                {
+                    Console.WriteLine($"Error: account number '{accNum}' not found.");
+
+                }
+            } while (index == -1);
+
+
+            Console.WriteLine($"The balance for  {customerNames[index]} ({accNum}): {FormatOMR(balances[index])}");
+            
         }
 
         static void TransferAmount()
