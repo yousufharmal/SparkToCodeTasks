@@ -59,6 +59,50 @@ public class Student
     }
 }
 
+public class Product
+{
+    public double Price { get; set; }
+    public string ProductName { get; set; }
+    public int StockQuantity { get; set; }
+
+    public void Sell (int quantity)
+    {
+        if (StockQuantity >= quantity)
+        {
+            StockQuantity -= quantity;
+        }
+        else
+        {
+            Console.WriteLine("Not enough stock");
+        }
+        LogTransaction();
+    }
+
+    public void Restock(int quantity)
+    {
+        StockQuantity += quantity;
+        LogTransaction();
+    }
+
+    public double GetInventoryValue()
+    {
+        PrintDetails();
+        return StockQuantity *  Price;
+    }
+
+    private void PrintDetails()
+    {
+        Console.WriteLine($"Your Product Name: {ProductName}");
+        Console.WriteLine($"Your Product Price: {Price}");
+        Console.WriteLine($"Your Stock Quantity: {StockQuantity}");
+    }
+
+    private void LogTransaction()
+    {
+        Console.WriteLine($"Transaction recorded for {ProductName}.");
+    }
+}
+
 public class Program
 {
     static void Main(string[] args)
