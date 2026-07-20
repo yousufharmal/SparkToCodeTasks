@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 5 - Collections", "Tas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingSystemApplication", "BankingSystemApplication\BankingSystemApplication.csproj", "{4755889B-873A-4EB8-A5DB-20034178AFEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Part1", "OOP_Part1\OOP_Part1.csproj", "{CD753A8F-2864-4D88-9580-6C437A2FF1B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{4755889B-873A-4EB8-A5DB-20034178AFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4755889B-873A-4EB8-A5DB-20034178AFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4755889B-873A-4EB8-A5DB-20034178AFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD753A8F-2864-4D88-9580-6C437A2FF1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD753A8F-2864-4D88-9580-6C437A2FF1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD753A8F-2864-4D88-9580-6C437A2FF1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD753A8F-2864-4D88-9580-6C437A2FF1B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
