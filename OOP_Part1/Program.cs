@@ -341,5 +341,26 @@ public class Program
         student.Register(email);
         Console.WriteLine(student.Name + " has been registered successfully.");
     }
+
+
+    static void CompareAccountBalances()
+    {
+        double accountBalance1 = B1.Balance;
+        double accountBalance2 = B2.Balance;
+        
+        if (accountBalance1 > accountBalance2)
+        {
+            Console.WriteLine(B1.HolderName + " has a higher balance.");
+        }
+        else if (accountBalance2 > accountBalance1)
+        {
+            Console.WriteLine(B2.HolderName + " has a higher balance.");
+        }
+        else
+        {
+            Console.WriteLine("Both accounts have equal balances.");
+        }
+    }
+    
     
 }
