@@ -421,4 +421,30 @@ public class Program
         }
     }
     
+    static void UpdateStudentGrade()
+    {
+        Student student = ChooseStudent();
+        Console.Write("Enter new grade: ");
+
+        int newGrade;
+        try
+        {
+            newGrade = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid input: grade must be a number. No change made.");
+            return;
+        }
+
+        if (newGrade < 0 || newGrade > 100)
+        {
+            Console.WriteLine("Invalid grade: must be between 0 and 100. No change made.");
+            return;
+        }
+
+        student.Grade = newGrade;
+        Console.WriteLine("Grade updated to: " + student.Grade);
+    }
+    
 }
