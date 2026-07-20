@@ -447,4 +447,17 @@ public class Program
         Console.WriteLine("Grade updated to: " + student.Grade);
     }
     
+    static void StudentReportCard()
+    {
+        Student student = ChooseStudent();
+        
+        string status = student.Grade >= 60 ? "Pass" : "Fail";
+
+        Console.WriteLine("----- Report Card -----");
+        Console.WriteLine("Name: " + student.Name);
+        Console.WriteLine("Address: " + student.Address);
+        Console.WriteLine("Grade: " + student.Grade);
+        Console.WriteLine("Status: " + status);
+    }
+    
 }
