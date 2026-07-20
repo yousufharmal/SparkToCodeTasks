@@ -505,4 +505,28 @@ public class Program
         }
     }
     
+    // --------------------------- Cases 14-15 (Advanced) ---------------------------
+
+    static void ScholarshipEligibilityCheck()
+    {
+        BankAccount account = ChooseAccount();
+        Student student = ChooseStudent();
+
+        if (student.Grade >= 80 && account.Balance > 100)
+        {
+            Console.WriteLine("Eligible");
+        } else if (account.Balance < 100 && student.Grade < 80)
+        {
+            Console.WriteLine("Not good grades AND not enough balance");
+        } else if (student.Grade < 80)
+        {
+            Console.WriteLine("Not good grades");
+        }
+        else
+        {
+            Console.WriteLine("Not enough balance");
+        }
+    }
+
+    
 }
