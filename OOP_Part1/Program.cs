@@ -7,6 +7,23 @@ public class BankAccount
     public string HolderName { get; set; }
     public double Balance { get; set; }
     
+    // Default constructor (used for the two starting accounts)
+    public BankAccount() { }
+
+    // Case 16 - Parameterized constructor (research)
+    public BankAccount(int accountNumber, string holderName, double balance)
+    {
+        AccountNumber = accountNumber;
+        HolderName = holderName;
+        Balance = balance;
+    }
+
+    // Case 18 - Read-only property (research): true when Balance is below 0
+    public bool IsOverdrawn
+    {
+        get { return Balance < 0; }
+    }
+    
     public void Deposit(double amount) 
     {
         Balance += amount;
@@ -45,6 +62,27 @@ public class Student
     public string Address { get; set; }
     private string email { get; set; } 
     int age { get; set; }
+    
+    // Case 17 - Static field & static method (research)
+    public static int TotalStudents;
+
+    public static int GetTotalStudents()
+    {
+        return TotalStudents;
+    }
+
+    // Constructor - counts every Student object created
+    public Student()
+    {
+        TotalStudents++;
+    }
+
+    // Case 19 - Write-only property (research): stores a 4-digit PIN, cannot be read back
+    private string securityPin;
+    public string SecurityPin
+    {
+        set { securityPin = value; }
+    }
 
 
     public void Register(string Email)
@@ -389,6 +427,212 @@ public class Program
             Console.WriteLine("Invalid quantity entered.");
         }
     }
+
+    static void TransferBetweenAccounts()
+    {
+        Console.WriteLine("Choose SOURCE account:");
+        BankAccount source = ChooseAccount();
+        Console.WriteLine("Choose DESTINATION account:");
+        BankAccount destination = ChooseAccount();
+        
+        Console.Write("Enter transfer amount: ");
+        try
+        {
+            double amount = double.Parse(Console.ReadLine());
+
+            if (source.Balance >= amount)
+            {
+                source.Withdraw(amount);
+                destination.Deposit(amount);
+                Console.WriteLine("Transfer successful.");
+                Console.WriteLine(source.HolderName + "'s new balance: " + source.Balance);
+                Console.WriteLine(destination.HolderName + "'s new balance: " + destination.Balance);
+            }
+            else
+            {
+                Console.WriteLine("Transfer failed: insufficient balance in source account.");
+            }
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid amount entered.");
+        }
+    }
     
+    static void UpdateStudentGrade()
+    {
+        Student student = ChooseStudent();
+        Console.Write("Enter new grade: ");
+
+        int newGrade;
+        try
+        {
+            newGrade = int.Parse(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid input: grade must be a number. No change made.");
+            return;
+        }
+
+        if (newGrade < 0 || newGrade > 100)
+        {
+            Console.WriteLine("Invalid grade: must be between 0 and 100. No change made.");
+            return;
+        }
+
+        student.Grade = newGrade;
+        Console.WriteLine("Grade updated to: " + student.Grade);
+    }
     
+    static void StudentReportCard()
+    {
+        Student student = ChooseStudent();
+        
+        string status = student.Grade >= 60 ? "Pass" : "Fail";
+
+        Console.WriteLine("----- Report Card -----");
+        Console.WriteLine("Name: " + student.Name);
+        Console.WriteLine("Address: " + student.Address);
+        Console.WriteLine("Grade: " + student.Grade);
+        Console.WriteLine("Status: " + status);
+    }
+    
+    static void AccountHealthStatus()
+    {
+        BankAccount account = ChooseAccount();
+        
+        if (account.Balance < 50)
+        {
+            Console.WriteLine("Low Balance, below 50");
+        }
+        else if (account.Balance >= 50)
+        {
+            Console.WriteLine("Healthy");
+        }
+        else if (account.Balance >= 1000)
+        {
+            Console.WriteLine("Premium");
+        }
+    }
+    
+    static void BulkSaleWithRevenue()
+    {
+        Product product = ChooseProduct();
+        Console.Write("Enter quantity to sell: ");
+
+        try
+        {
+            int quantity = int.Parse(Console.ReadLine());
+
+            if (product.StockQuantity < quantity)
+            {
+                int shortfall = quantity - product.StockQuantity;
+                Console.WriteLine("Not enough stock. You need " + shortfall + " more unit(s) to fulfill this order.");
+            }
+            else
+            {
+                double revenue = quantity * product.Price;
+                product.Sell(quantity);
+                Console.WriteLine("Sale completed. Revenue: " + revenue);
+            }
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid quantity entered.");
+        }
+    }
+    
+    // --------------------------- Cases 14-15 (Advanced) ---------------------------
+
+    static void ScholarshipEligibilityCheck()
+    {
+        BankAccount account = ChooseAccount();
+        Student student = ChooseStudent();
+
+        if (student.Grade >= 80 && account.Balance > 100)
+        {
+            Console.WriteLine("Eligible");
+        } else if (account.Balance < 100 && student.Grade < 80)
+        {
+            Console.WriteLine("Not good grades AND not enough balance");
+        } else if (student.Grade < 80)
+        {
+            Console.WriteLine("Not good grades");
+        }
+        else
+        {
+            Console.WriteLine("Not enough balance");
+        }
+    }
+    
+    static void FullBalanceTopUpFlow()
+    {
+        BankAccount account = ChooseAccount();
+
+        if (account.Balance < 50)
+        {
+            double before = account.Balance;
+            double topUp = 100 - account.Balance;
+            account.Deposit(topUp);
+            Console.WriteLine("Balance before top-up: " + before);
+            Console.WriteLine("Balance after top-up: " + account.Balance);
+        }
+        else
+        {
+            Console.WriteLine("No top-up needed - balance is already 50 or above.");
+        }
+    }
+    
+    // --------------------------- Cases 16-19 (Research) ---------------------------
+
+    static void QuickAccountOpening()
+    {
+        Console.Write("Enter new account number: ");
+        int accountNumber = int.Parse(Console.ReadLine());
+        Console.Write("Enter holder name: ");
+        string holderName = Console.ReadLine();
+        Console.Write("Enter starting balance: ");
+        double balance = double.Parse(Console.ReadLine());
+
+        BankAccount newAccount = new BankAccount(accountNumber, holderName, balance);
+
+        Console.WriteLine("New account created:");
+        Console.WriteLine("Account Number: " + newAccount.AccountNumber);
+        Console.WriteLine("Holder Name: " + newAccount.HolderName);
+        Console.WriteLine("Balance: " + newAccount.Balance);
+    }
+
+    static void TotalStudentsCounter()
+    {
+        int total = Student.GetTotalStudents();
+        Console.WriteLine("Total students registered in the system: " + total);
+    }
+
+    static void OverdrawnAccountCheck()
+    {
+        BankAccount account = ChooseAccount();
+        if (account.IsOverdrawn)
+        {
+            Console.WriteLine("This account is overdrawn.");
+        }
+        else
+        {
+            Console.WriteLine("This account is not overdrawn.");
+        }
+    }
+
+    static void SetStudentSecurityPin()
+    {
+        Student student = ChooseStudent();
+        Console.Write("Enter a 4-digit PIN: ");
+        string pin = Console.ReadLine();
+        student.SecurityPin = pin;
+        Console.WriteLine("PIN set successfully.");
+    }
 }
+    
+    
+    
+
+    
