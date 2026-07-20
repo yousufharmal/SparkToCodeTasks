@@ -332,5 +332,14 @@ public class Program
         Product product = ChooseProduct();
         product.GetInventoryValue();
     }
+
+    static void RegisterStudent()
+    {
+        Student student = ChooseStudent();
+        Console.Write("Enter email: ");
+        string email = Console.ReadLine();
+        student.Register(email);
+        Console.WriteLine(student.Name + " has been registered successfully.");
+    }
     
 }
