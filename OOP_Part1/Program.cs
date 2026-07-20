@@ -277,11 +277,23 @@ public class Program
         return P1;
     }
     
-    // --------------------------- Cases 1-5 (Easy) ---------------------------
-    public static void ViewAccountDetails()
+    // --------------------------- Cases 1-5 (Easy) ---------------------------static void ViewAccountDetails()
+    static void ViewAccountDetails()
     {
        BankAccount choice =  ChooseAccount();
        choice.CheckBalance();
     }
+    
+    static void UpdateStudentAddress()
+    {
+        Student student = ChooseStudent();
+
+        Console.Write("Enter new address: ");
+        string newAddress = Console.ReadLine();
+        student.Address = newAddress;
+        Console.WriteLine("Address updated to: " + student.Address);
+    }
+    
+    
     
 }
