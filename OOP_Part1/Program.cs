@@ -234,6 +234,7 @@ public class Program
             Console.WriteLine("press any key");
             Console.ReadKey();
             Console.Clear();
+            
 
         }
         */
@@ -326,5 +327,10 @@ public class Program
         }
     }
     
+    static void ViewProductDetails()
+    {
+        Product product = ChooseProduct();
+        product.GetInventoryValue();
+    }
     
 }
