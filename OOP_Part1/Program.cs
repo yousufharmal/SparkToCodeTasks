@@ -309,8 +309,22 @@ public class Program
             Console.WriteLine("Invalid amount entered.");
         }
     }
-    
-    
+
+    static void MakeWithdrawal()
+    {
+        BankAccount account = ChooseAccount();
+        Console.Write("Enter withdrawal amount: ");
+        try
+        {
+            double amount = double.Parse(Console.ReadLine());
+            account.Withdraw(amount);
+            Console.WriteLine("Updated balance: " + account.Balance);
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid amount entered.");
+        }
+    }
     
     
 }
