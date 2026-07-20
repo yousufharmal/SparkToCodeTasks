@@ -7,6 +7,23 @@ public class BankAccount
     public string HolderName { get; set; }
     public double Balance { get; set; }
     
+    // Default constructor (used for the two starting accounts)
+    public BankAccount() { }
+
+    // Case 16 - Parameterized constructor (research)
+    public BankAccount(int accountNumber, string holderName, double balance)
+    {
+        AccountNumber = accountNumber;
+        HolderName = holderName;
+        Balance = balance;
+    }
+
+    // Case 18 - Read-only property (research): true when Balance is below 0
+    public bool IsOverdrawn
+    {
+        get { return Balance < 0; }
+    }
+    
     public void Deposit(double amount) 
     {
         Balance += amount;
@@ -45,6 +62,27 @@ public class Student
     public string Address { get; set; }
     private string email { get; set; } 
     int age { get; set; }
+    
+    // Case 17 - Static field & static method (research)
+    public static int TotalStudents;
+
+    public static int GetTotalStudents()
+    {
+        return TotalStudents;
+    }
+
+    // Constructor - counts every Student object created
+    public Student()
+    {
+        TotalStudents++;
+    }
+
+    // Case 19 - Write-only property (research): stores a 4-digit PIN, cannot be read back
+    private string securityPin;
+    public string SecurityPin
+    {
+        set { securityPin = value; }
+    }
 
 
     public void Register(string Email)
@@ -546,8 +584,55 @@ public class Program
         }
     }
     
+    // --------------------------- Cases 16-19 (Research) ---------------------------
+
+    static void QuickAccountOpening()
+    {
+        Console.Write("Enter new account number: ");
+        int accountNumber = int.Parse(Console.ReadLine());
+        Console.Write("Enter holder name: ");
+        string holderName = Console.ReadLine();
+        Console.Write("Enter starting balance: ");
+        double balance = double.Parse(Console.ReadLine());
+
+        BankAccount newAccount = new BankAccount(accountNumber, holderName, balance);
+
+        Console.WriteLine("New account created:");
+        Console.WriteLine("Account Number: " + newAccount.AccountNumber);
+        Console.WriteLine("Holder Name: " + newAccount.HolderName);
+        Console.WriteLine("Balance: " + newAccount.Balance);
+    }
+
+    static void TotalStudentsCounter()
+    {
+        int total = Student.GetTotalStudents();
+        Console.WriteLine("Total students registered in the system: " + total);
+    }
+
+    static void OverdrawnAccountCheck()
+    {
+        BankAccount account = ChooseAccount();
+        if (account.IsOverdrawn)
+        {
+            Console.WriteLine("This account is overdrawn.");
+        }
+        else
+        {
+            Console.WriteLine("This account is not overdrawn.");
+        }
+    }
+
+    static void SetStudentSecurityPin()
+    {
+        Student student = ChooseStudent();
+        Console.Write("Enter a 4-digit PIN: ");
+        string pin = Console.ReadLine();
+        student.SecurityPin = pin;
+        Console.WriteLine("PIN set successfully.");
+    }
+}
+    
     
     
 
     
-}
