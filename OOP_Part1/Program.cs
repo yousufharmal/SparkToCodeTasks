@@ -361,6 +361,34 @@ public class Program
             Console.WriteLine("Both accounts have equal balances.");
         }
     }
+
+    static void RestockProduct()
+    {
+        Product product = ChooseProduct();
+        Console.Write("Enter amount to restock: ");
+        try
+        {
+            int quantity = int.Parse(Console.ReadLine());
+            product.Restock(quantity);
+
+            if (product.StockQuantity < 10)
+            {
+                Console.WriteLine("Stock level: Low (" + product.StockQuantity + ")");
+            }
+            else if (product.StockQuantity < 50)
+            {
+                Console.WriteLine("Stock level: Moderate (" + product.StockQuantity + ")");
+            }
+            else
+            {
+                Console.WriteLine("Stock level: Well Stocked (" + product.StockQuantity + ")");
+            }
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid quantity entered.");
+        }
+    }
     
     
 }
