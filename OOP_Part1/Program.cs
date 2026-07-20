@@ -389,6 +389,36 @@ public class Program
             Console.WriteLine("Invalid quantity entered.");
         }
     }
-    
+
+    static void TransferBetweenAccounts()
+    {
+        Console.WriteLine("Choose SOURCE account:");
+        BankAccount source = ChooseAccount();
+        Console.WriteLine("Choose DESTINATION account:");
+        BankAccount destination = ChooseAccount();
+        
+        Console.Write("Enter transfer amount: ");
+        try
+        {
+            double amount = double.Parse(Console.ReadLine());
+
+            if (source.Balance >= amount)
+            {
+                source.Withdraw(amount);
+                destination.Deposit(amount);
+                Console.WriteLine("Transfer successful.");
+                Console.WriteLine(source.HolderName + "'s new balance: " + source.Balance);
+                Console.WriteLine(destination.HolderName + "'s new balance: " + destination.Balance);
+            }
+            else
+            {
+                Console.WriteLine("Transfer failed: insufficient balance in source account.");
+            }
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid amount entered.");
+        }
+    }
     
 }
