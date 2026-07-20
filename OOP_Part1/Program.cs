@@ -276,4 +276,12 @@ public class Program
         }
         return P1;
     }
+    
+    // --------------------------- Cases 1-5 (Easy) ---------------------------
+    public static void ViewAccountDetails()
+    {
+       BankAccount choice =  ChooseAccount();
+       choice.CheckBalance();
+    }
+    
 }
