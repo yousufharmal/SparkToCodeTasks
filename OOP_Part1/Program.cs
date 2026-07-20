@@ -478,4 +478,31 @@ public class Program
         }
     }
     
+    static void BulkSaleWithRevenue()
+    {
+        Product product = ChooseProduct();
+        Console.Write("Enter quantity to sell: ");
+
+        try
+        {
+            int quantity = int.Parse(Console.ReadLine());
+
+            if (product.StockQuantity < quantity)
+            {
+                int shortfall = quantity - product.StockQuantity;
+                Console.WriteLine("Not enough stock. You need " + shortfall + " more unit(s) to fulfill this order.");
+            }
+            else
+            {
+                double revenue = quantity * product.Price;
+                product.Sell(quantity);
+                Console.WriteLine("Sale completed. Revenue: " + revenue);
+            }
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid quantity entered.");
+        }
+    }
+    
 }
