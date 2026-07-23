@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingSystemApplication", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Part1", "OOP_Part1\OOP_Part1.csproj", "{CD753A8F-2864-4D88-9580-6C437A2FF1B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_2_LINQ", "OOP_2_LINQ\OOP_2_LINQ.csproj", "{123E2D8B-599D-41F8-8F07-FB7B6610522D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{CD753A8F-2864-4D88-9580-6C437A2FF1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD753A8F-2864-4D88-9580-6C437A2FF1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD753A8F-2864-4D88-9580-6C437A2FF1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{123E2D8B-599D-41F8-8F07-FB7B6610522D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{123E2D8B-599D-41F8-8F07-FB7B6610522D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{123E2D8B-599D-41F8-8F07-FB7B6610522D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{123E2D8B-599D-41F8-8F07-FB7B6610522D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
