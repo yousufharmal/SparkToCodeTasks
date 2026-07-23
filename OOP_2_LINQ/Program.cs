@@ -106,11 +106,11 @@ namespace OOP_2_LINQ
                     case 3:
                         BookRoomForGuest(rooms, guests);
                         break;
-                    /*
+                    
                     case 4:
                         ViewAllRooms(rooms);
                         break;
-
+                    /*
                     case 5:
                         ViewAllGuests(guests);
                         break;
@@ -287,6 +287,28 @@ namespace OOP_2_LINQ
             Console.WriteLine($"Price per night: OMR {room.PricePerNight:F2}");
             Console.WriteLine($"Total nights: {guest.TotalNights}");
             Console.WriteLine($"Total cost: OMR {guest.CalculateTotalCost():F2}");
+        }
+        
+        // =========================================================
+        // CASE 04 - VIEW ALL ROOMS
+        // =========================================================
+        static void ViewAllRooms(List<Room> rooms)
+        {
+            Console.WriteLine("=== ALL ROOMS ===");
+
+            if (!rooms.Any())
+            {
+                Console.WriteLine("No rooms have been added yet.");
+                return;
+            }
+
+            Console.WriteLine($"Total rooms: {rooms.Count()}\n");
+
+            List<Room> orderedRooms = rooms
+                .OrderBy(room => room.RoomNumber)
+                .ToList();
+
+            orderedRooms.ForEach(room => room.DisplayRoom());
         }
 
         
