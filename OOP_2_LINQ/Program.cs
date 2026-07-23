@@ -118,11 +118,11 @@ namespace OOP_2_LINQ
                     case 6:
                         SearchAndFilterRooms(rooms);
                         break;
-                    /*
+                    
                     case 7:
                         GuestAndBookingStatistics(rooms, guests);
                         break;
-
+                    /*
                     case 8:
                         UpdateRoomPrice(rooms);
                         break;
@@ -442,6 +442,61 @@ namespace OOP_2_LINQ
             Console.WriteLine(
                 $"Most expensive price: OMR {rooms.Max(room => room.PricePerNight):F2}");
         }
+        
+        // =========================================================
+        // CASE 07 - GUEST AND BOOKING STATISTICS
+        // =========================================================
+        static void GuestAndBookingStatistics(
+            List<Room> rooms,
+            List<Guest> guests)
+        {
+            Console.WriteLine("=== GUEST & BOOKING STATISTICS ===");
+
+            List<Guest> bookedGuests = guests
+                .Where(guest => guest.RoomNumber != "Not Assigned")
+                .ToList();
+
+            Console.WriteLine($"Total registered guests: {guests.Count()}");
+            Console.WriteLine($"Guests with active bookings: {bookedGuests.Count()}");
+            Console.WriteLine($"Total rooms: {rooms.Count()}");
+            Console.WriteLine(
+                $"Currently booked rooms: {rooms.Count(room => !room.IsAvailable)}");
+
+            if (!bookedGuests.Any())
+            {
+                Console.WriteLine("\nNo active bookings recorded.");
+                return;
+            }
+
+            double averageNights = bookedGuests
+                .Average(guest => guest.TotalNights);
+
+            Console.WriteLine($"Average booked nights: {averageNights:F2}");
+
+            List<Guest> topGuests = bookedGuests
+                .OrderByDescending(guest => guest.CalculateTotalCost())
+                .Take(3)
+                .ToList();
+
+            Console.WriteLine("\nTop 3 highest-spending guests:");
+
+            topGuests.ForEach(guest =>
+                Console.WriteLine(
+                    $"{guest.GuestName} | Room {guest.RoomNumber} | " +
+                    $"OMR {guest.CalculateTotalCost():F2}"));
+
+            List<string> summaries = bookedGuests
+                .Select(guest =>
+                    $"{guest.GuestName} — Room {guest.RoomNumber} — " +
+                    $"{guest.TotalNights} nights — " +
+                    $"OMR {guest.CalculateTotalCost():F2}")
+                .ToList();
+
+            Console.WriteLine("\nActive booking summaries:");
+
+            summaries.ForEach(summary => Console.WriteLine(summary));
+        }
+
 
         
         // =========================================================
