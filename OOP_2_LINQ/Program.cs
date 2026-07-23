@@ -102,11 +102,11 @@ namespace OOP_2_LINQ
                     case 2:
                         RegisterNewGuest(guests);
                         break;
-                    /*
+                    
                     case 3:
                         BookRoomForGuest(rooms, guests);
                         break;
-
+                    /*
                     case 4:
                         ViewAllRooms(rooms);
                         break;
@@ -234,6 +234,59 @@ namespace OOP_2_LINQ
 
             Console.WriteLine("\nGuest registered successfully.");
             newGuest.DisplayGuest();
+        }
+        
+        // =========================================================
+        // CASE 03 - BOOK A ROOM FOR A GUEST
+        // =========================================================
+        static void BookRoomForGuest(List<Room> rooms, List<Guest> guests)
+        {
+            Console.WriteLine("=== BOOK A ROOM FOR A GUEST ===");
+
+            string guestId = ReadRequiredText("Enter guest ID: ").ToUpper();
+            int roomNumber = ReadPositiveInt("Enter desired room number: ");
+
+            Guest guest = guests.FirstOrDefault(
+                g => g.GuestId.Equals(guestId, StringComparison.OrdinalIgnoreCase));
+
+            if (guest == null)
+            {
+                Console.WriteLine("Guest not found.");
+                return;
+            }
+
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+
+            if (room == null)
+            {
+                Console.WriteLine("Room not found.");
+                return;
+            }
+
+            if (guest.RoomNumber != "Not Assigned")
+            {
+                Console.WriteLine(
+                    $"This guest already has Room {guest.RoomNumber} assigned.");
+                return;
+            }
+
+            if (!room.IsAvailable)
+            {
+                Console.WriteLine("Room is already booked.");
+                return;
+            }
+
+            guest.RoomNumber = room.RoomNumber.ToString();
+            guest.PricePerNight = room.PricePerNight;
+            room.IsAvailable = false;
+
+            Console.WriteLine("\nBooking confirmed.");
+            Console.WriteLine($"Guest name: {guest.GuestName}");
+            Console.WriteLine($"Room number: {room.RoomNumber}");
+            Console.WriteLine($"Room type: {room.RoomType}");
+            Console.WriteLine($"Price per night: OMR {room.PricePerNight:F2}");
+            Console.WriteLine($"Total nights: {guest.TotalNights}");
+            Console.WriteLine($"Total cost: OMR {guest.CalculateTotalCost():F2}");
         }
 
         
