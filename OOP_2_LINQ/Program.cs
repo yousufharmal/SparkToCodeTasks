@@ -130,11 +130,11 @@ namespace OOP_2_LINQ
                     case 9:
                         GuestLookupByName(guests);
                         break;
-                    /*
+                    
                     case 10:
                         RoomTypeBreakdownReport(rooms);
                         break;
-
+                    /*
                     case 11:
                         CheckOutGuest(rooms, guests);
                         break;
@@ -555,6 +555,54 @@ namespace OOP_2_LINQ
                 Console.WriteLine(
                     $"ID: {guest.GuestId} | Name: {guest.GuestName} | " +
                     $"Room: {guest.RoomNumber}"));
+        }
+        
+        // =========================================================
+        // CASE 10 - ROOM TYPE BREAKDOWN REPORT
+        // =========================================================
+        static void RoomTypeBreakdownReport(List<Room> rooms)
+        {
+            Console.WriteLine("=== ROOM TYPE BREAKDOWN REPORT ===");
+
+            string[] roomTypes = { "Single", "Double", "Suite" };
+
+            roomTypes.ToList().ForEach(roomType =>
+            {
+                int typeCount = rooms.Count(room =>
+                    room.RoomType.Equals(
+                        roomType,
+                        StringComparison.OrdinalIgnoreCase));
+
+                Console.WriteLine($"\n{roomType} rooms: {typeCount}");
+
+                if (typeCount == 0)
+                {
+                    Console.WriteLine("Average price: N/A");
+                }
+                else
+                {
+                    double typeAverage = rooms
+                        .Where(room =>
+                            room.RoomType.Equals(
+                                roomType,
+                                StringComparison.OrdinalIgnoreCase))
+                        .Average(room => room.PricePerNight);
+
+                    Console.WriteLine(
+                        $"Average price: OMR {typeAverage:F2}");
+                }
+            });
+
+            if (rooms.Any())
+            {
+                Console.WriteLine(
+                    $"\nOverall average price: OMR " +
+                    $"{rooms.Average(room => room.PricePerNight):F2}");
+            }
+            else
+            {
+                Console.WriteLine("\nOverall average price: N/A");
+            }
         }
         
         // =========================================================
