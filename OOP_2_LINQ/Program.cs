@@ -122,11 +122,11 @@ namespace OOP_2_LINQ
                     case 7:
                         GuestAndBookingStatistics(rooms, guests);
                         break;
-                    /*
+                    
                     case 8:
                         UpdateRoomPrice(rooms);
                         break;
-
+                    /*
                     case 9:
                         GuestLookupByName(guests);
                         break;
@@ -496,8 +496,35 @@ namespace OOP_2_LINQ
 
             summaries.ForEach(summary => Console.WriteLine(summary));
         }
+            
+        // =========================================================
+        // CASE 08 - UPDATE ROOM PRICE
+        // =========================================================
+        static void UpdateRoomPrice(List<Room> rooms)
+        {
+            Console.WriteLine("=== UPDATE ROOM PRICE ===");
 
+            int roomNumber = ReadPositiveInt("Enter room number: ");
 
+            Room room = rooms.FirstOrDefault(
+                currentRoom => currentRoom.RoomNumber == roomNumber);
+
+            if (room == null)
+            {
+                Console.WriteLine("Room not found.");
+                return;
+            }
+
+            double newPrice = ReadPositiveDouble(
+                "Enter new price per night: OMR ");
+
+            double oldPrice = room.PricePerNight;
+            room.PricePerNight = newPrice;
+
+            Console.WriteLine("Room price updated successfully.");
+            Console.WriteLine($"Old price: OMR {oldPrice:F2}");
+            Console.WriteLine($"New price: OMR {room.PricePerNight:F2}");
+        }
         
         // =========================================================
         // SIMPLE HELPER METHODS
