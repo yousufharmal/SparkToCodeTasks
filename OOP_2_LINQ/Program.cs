@@ -126,11 +126,11 @@ namespace OOP_2_LINQ
                     case 8:
                         UpdateRoomPrice(rooms);
                         break;
-                    /*
+                    
                     case 9:
                         GuestLookupByName(guests);
                         break;
-
+                    /*
                     case 10:
                         RoomTypeBreakdownReport(rooms);
                         break;
@@ -524,6 +524,37 @@ namespace OOP_2_LINQ
             Console.WriteLine("Room price updated successfully.");
             Console.WriteLine($"Old price: OMR {oldPrice:F2}");
             Console.WriteLine($"New price: OMR {room.PricePerNight:F2}");
+        }
+        
+        // =========================================================
+        // CASE 09 - GUEST LOOKUP BY NAME
+        // =========================================================
+        static void GuestLookupByName(List<Guest> guests)
+        {
+            Console.WriteLine("=== GUEST LOOKUP BY NAME ===");
+
+            string searchText = ReadRequiredText(
+                "Enter a full or partial guest name: ");
+
+            List<Guest> matchingGuests = guests
+                .Where(guest =>
+                    guest.GuestName.Contains(
+                        searchText,
+                        StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (!matchingGuests.Any())
+            {
+                Console.WriteLine("No guests matched that search.");
+                return;
+            }
+
+            Console.WriteLine($"Matches found: {matchingGuests.Count()}\n");
+
+            matchingGuests.ForEach(guest =>
+                Console.WriteLine(
+                    $"ID: {guest.GuestId} | Name: {guest.GuestName} | " +
+                    $"Room: {guest.RoomNumber}"));
         }
         
         // =========================================================
