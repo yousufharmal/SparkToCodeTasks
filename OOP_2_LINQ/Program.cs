@@ -72,7 +72,273 @@ namespace OOP_2_LINQ
     {
         static void Main(string[] args)
         {
+            List<Room> rooms = new List<Room>
+            {
+                new Room(101, "Single", 25.000),
+                new Room(102, "Single", 28.000),
+                new Room(201, "Double", 40.000),
+                new Room(202, "Double", 45.000),
+                new Room(301, "Suite", 80.000),
+                new Room(302, "Suite", 95.000)
+            };
 
+            List<Guest> guests = new List<Guest>();
+
+            bool running = true;
+
+            while (running)
+            {
+                DisplayMainMenu();
+                int choice = ReadInt("Enter your choice: ");
+
+                Console.WriteLine();
+                /*
+                switch (choice)
+                {
+                    case 1:
+                        AddNewRoom(rooms);
+                        break;
+
+                    case 2:
+                        RegisterNewGuest(guests);
+                        break;
+
+                    case 3:
+                        BookRoomForGuest(rooms, guests);
+                        break;
+
+                    case 4:
+                        ViewAllRooms(rooms);
+                        break;
+
+                    case 5:
+                        ViewAllGuests(guests);
+                        break;
+
+                    case 6:
+                        SearchAndFilterRooms(rooms);
+                        break;
+
+                    case 7:
+                        GuestAndBookingStatistics(rooms, guests);
+                        break;
+
+                    case 8:
+                        UpdateRoomPrice(rooms);
+                        break;
+
+                    case 9:
+                        GuestLookupByName(guests);
+                        break;
+
+                    case 10:
+                        RoomTypeBreakdownReport(rooms);
+                        break;
+
+                    case 11:
+                        CheckOutGuest(rooms, guests);
+                        break;
+
+                    case 12:
+                        RemoveUnavailableRooms(rooms, guests);
+                        break;
+
+                    case 13:
+                        ExtendGuestStay(guests);
+                        break;
+
+                    case 14:
+                        HighestRevenueBooking(guests);
+                        break;
+
+                    case 15:
+                        GuestPaginationViewer(guests);
+                        break;
+
+                    case 0:
+                        running = false;
+                        Console.WriteLine("Thank you for using the system.");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid menu choice.");
+                        break;
+                }
+                    */
+                if (running)
+                {
+                    Pause();
+                }
+            }
+        }
+        
+        // =========================================================
+        // SIMPLE HELPER METHODS
+        // =========================================================
+        static void DisplayMainMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("================================================");
+            Console.WriteLine("HOTEL MANAGEMENT SYSTEM");
+            Console.WriteLine("================================================");
+            Console.WriteLine(" 1. Add New Room");
+            Console.WriteLine(" 2. Register New Guest");
+            Console.WriteLine(" 3. Book a Room for a Guest");
+            Console.WriteLine(" 4. View All Rooms");
+            Console.WriteLine(" 5. View All Guests");
+            Console.WriteLine(" 6. Search & Filter Rooms");
+            Console.WriteLine(" 7. Guest & Booking Statistics");
+            Console.WriteLine(" 8. Update Room Price");
+            Console.WriteLine(" 9. Guest Lookup by Name");
+            Console.WriteLine("10. Room Type Breakdown Report");
+            Console.WriteLine("11. Check Out a Guest");
+            Console.WriteLine("12. Remove Unavailable Rooms");
+            Console.WriteLine("13. Extend Guest Stay");
+            Console.WriteLine("14. Highest Revenue Booking");
+            Console.WriteLine("15. Guest Pagination Viewer");
+            Console.WriteLine(" 0. Exit");
+            Console.WriteLine("================================================");
+        }
+
+        static int ReadInt(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+
+                try
+                {
+                    return int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Please enter a valid whole number.");
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("The number entered is too large.");
+                }
+            }
+        }
+
+        static int ReadPositiveInt(string message)
+        {
+            while (true)
+            {
+                int number = ReadInt(message);
+
+                if (number > 0)
+                {
+                    return number;
+                }
+
+                Console.WriteLine("Please enter a number greater than zero.");
+            }
+        }
+
+        static double ReadPositiveDouble(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+
+                try
+                {
+                    double number = double.Parse(Console.ReadLine());
+
+                    if (number > 0)
+                    {
+                        return number;
+                    }
+
+                    Console.WriteLine(
+                        "Please enter a number greater than zero.");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("The number entered is too large.");
+                }
+            }
+        }
+
+        static string ReadRequiredText(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    return input.Trim();
+                }
+
+                Console.WriteLine("This value cannot be empty.");
+            }
+        }
+
+        static string ReadRoomType()
+        {
+            while (true)
+            {
+                string roomType = ReadRequiredText(
+                    "Enter room type (Single/Double/Suite): ");
+
+                if (roomType.Equals(
+                    "Single",
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    return "Single";
+                }
+
+                if (roomType.Equals(
+                    "Double",
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    return "Double";
+                }
+
+                if (roomType.Equals(
+                    "Suite",
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    return "Suite";
+                }
+
+                Console.WriteLine(
+                    "Invalid room type. Enter Single, Double, or Suite.");
+            }
+        }
+
+        static char ReadYesOrNo(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine().Trim().ToUpper();
+
+                if (input == "Y")
+                {
+                    return 'Y';
+                }
+
+                if (input == "N")
+                {
+                    return 'N';
+                }
+
+                Console.WriteLine("Please enter Y or N.");
+            }
+        }
+
+        static void Pause()
+        {
+            Console.WriteLine("\nPress Enter to return to the menu...");
+            Console.ReadLine();
         }
     }
 }
