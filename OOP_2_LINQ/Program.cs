@@ -98,11 +98,11 @@ namespace OOP_2_LINQ
                     case 1:
                         AddNewRoom(rooms);
                         break;
-                    /*
+                    
                     case 2:
                         RegisterNewGuest(guests);
                         break;
-
+                    /*
                     case 3:
                         BookRoomForGuest(rooms, guests);
                         break;
@@ -201,6 +201,41 @@ namespace OOP_2_LINQ
             newRoom.DisplayRoom();
             Console.WriteLine($"Updated total room count: {rooms.Count()}");
         }
+        
+        // =========================================================
+        // CASE 02 - REGISTER NEW GUEST
+        // =========================================================
+        static void RegisterNewGuest(List<Guest> guests)
+        {
+            Console.WriteLine("=== REGISTER NEW GUEST ===");
+
+            string guestName = ReadRequiredText("Enter guest name: ");
+            string checkInDate = ReadRequiredText("Enter check-in date: ");
+            int totalNights = ReadPositiveInt("Enter number of nights: ");
+
+            int nextIdNumber = guests.Count() + 1;
+            string guestId = $"G{nextIdNumber:D3}";
+
+            // Prevent a repeated ID if guests were removed after checkout.
+            while (guests.Any(guest => guest.GuestId == guestId))
+            {
+                nextIdNumber++;
+                guestId = $"G{nextIdNumber:D3}";
+            }
+
+            Guest newGuest = new Guest(
+                guestId,
+                guestName,
+                "Not Assigned",
+                checkInDate,
+                totalNights);
+
+            guests.Add(newGuest);
+
+            Console.WriteLine("\nGuest registered successfully.");
+            newGuest.DisplayGuest();
+        }
+
         
         // =========================================================
         // SIMPLE HELPER METHODS
