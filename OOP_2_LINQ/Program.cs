@@ -92,13 +92,13 @@ namespace OOP_2_LINQ
                 int choice = ReadInt("Enter your choice: ");
 
                 Console.WriteLine();
-                /*
+                
                 switch (choice)
                 {
                     case 1:
                         AddNewRoom(rooms);
                         break;
-
+                    /*
                     case 2:
                         RegisterNewGuest(guests);
                         break;
@@ -163,13 +163,43 @@ namespace OOP_2_LINQ
                     default:
                         Console.WriteLine("Invalid menu choice.");
                         break;
-                }
                     */
+                }
+                
+                    
                 if (running)
                 {
                     Pause();
                 }
             }
+        }
+        
+        // =========================================================
+        // CASE 01 - ADD NEW ROOM
+        // =========================================================
+        static void AddNewRoom(List<Room> rooms)
+        {
+            Console.WriteLine("=== ADD NEW ROOM ===");
+
+            int roomNumber = ReadPositiveInt("Enter room number: ");
+
+            bool roomExists = rooms.Any(room => room.RoomNumber == roomNumber);
+
+            if (roomExists)
+            {
+                Console.WriteLine("Error: A room with that number already exists.");
+                return;
+            }
+
+            string roomType = ReadRoomType();
+            double price = ReadPositiveDouble("Enter price per night: OMR ");
+
+            Room newRoom = new Room(roomNumber, roomType, price, true);
+            rooms.Add(newRoom);
+
+            Console.WriteLine("\nRoom added successfully.");
+            newRoom.DisplayRoom();
+            Console.WriteLine($"Updated total room count: {rooms.Count()}");
         }
         
         // =========================================================
