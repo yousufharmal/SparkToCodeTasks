@@ -134,7 +134,7 @@ namespace OOP_2_LINQ
                     case 10:
                         RoomTypeBreakdownReport(rooms);
                         break;
-                    /*
+                    
                     case 11:
                         CheckOutGuest(rooms, guests);
                         break;
@@ -142,7 +142,7 @@ namespace OOP_2_LINQ
                     case 12:
                         RemoveUnavailableRooms(rooms, guests);
                         break;
-
+                    /*
                     case 13:
                         ExtendGuestStay(guests);
                         break;
@@ -602,6 +602,155 @@ namespace OOP_2_LINQ
             else
             {
                 Console.WriteLine("\nOverall average price: N/A");
+            }
+        }
+        
+        // =========================================================
+        // CASE 11 - CHECK OUT A GUEST
+        // =========================================================
+        static void CheckOutGuest(
+            List<Room> rooms,
+            List<Guest> guests)
+        {
+            Console.WriteLine("=== CHECK OUT A GUEST ===");
+
+            string guestId = ReadRequiredText(
+                "Enter guest ID to check out: ").ToUpper();
+
+            Guest guest = guests.FirstOrDefault(g =>
+                g.GuestId.Equals(
+                    guestId,
+                    StringComparison.OrdinalIgnoreCase));
+
+            if (guest == null)
+            {
+                Console.WriteLine("Guest not found.");
+                return;
+            }
+
+            if (guest.RoomNumber == "Not Assigned")
+            {
+                Console.WriteLine("This guest has no active booking.");
+                return;
+            }
+
+            int bookedRoomNumber;
+
+            if (!int.TryParse(guest.RoomNumber, out bookedRoomNumber))
+            {
+                Console.WriteLine("The guest's room information is invalid.");
+                return;
+            }
+
+            Room room = rooms.FirstOrDefault(r =>
+                r.RoomNumber == bookedRoomNumber);
+
+            if (room == null)
+            {
+                Console.WriteLine("The linked room could not be found.");
+                return;
+            }
+
+            Console.WriteLine("\n=== FINAL BILL ===");
+            Console.WriteLine($"Guest name: {guest.GuestName}");
+            Console.WriteLine($"Room number: {room.RoomNumber}");
+            Console.WriteLine($"Room type: {room.RoomType}");
+            Console.WriteLine($"Check-in date: {guest.CheckInDate}");
+            Console.WriteLine($"Total nights: {guest.TotalNights}");
+            Console.WriteLine($"Price per night: OMR {guest.PricePerNight:F2}");
+            Console.WriteLine(
+                $"Total cost: OMR {guest.CalculateTotalCost():F2}");
+
+            char confirmation = ReadYesOrNo(
+                "\nConfirm checkout (Y/N): ");
+
+            if (confirmation == 'N')
+            {
+                Console.WriteLine("Checkout cancelled. No changes were made.");
+                return;
+            }
+
+            room.IsAvailable = true;
+            guests.Remove(guest);
+
+            bool roomIsNowAvailable = rooms.Any(r =>
+                r.RoomNumber == room.RoomNumber &&
+                r.IsAvailable);
+
+            Console.WriteLine("\nCheckout completed successfully.");
+            Console.WriteLine($"Guest checked out: {guest.GuestName}");
+            Console.WriteLine($"Room {room.RoomNumber} available: {roomIsNowAvailable}");
+            Console.WriteLine($"Updated room count: {rooms.Count()}");
+            Console.WriteLine($"Updated guest count: {guests.Count()}");
+        }
+
+        // =========================================================
+        // CASE 12 - REMOVE UNAVAILABLE ROOMS
+        // =========================================================
+        static void RemoveUnavailableRooms(
+            List<Room> rooms,
+            List<Guest> guests)
+        {
+            Console.WriteLine("=== REMOVE UNAVAILABLE ROOMS ===");
+
+            List<Room> removableRooms = rooms
+                .Where(room =>
+                    !room.IsAvailable &&
+                    !guests.Any(guest =>
+                        guest.RoomNumber == room.RoomNumber.ToString()))
+                .OrderBy(room => room.RoomNumber)
+                .ToList();
+
+            if (!removableRooms.Any())
+            {
+                Console.WriteLine(
+                    "All unavailable rooms are currently occupied. " +
+                    "No rooms can be decommissioned.");
+                return;
+            }
+
+            Console.WriteLine("Rooms safe to remove:\n");
+
+            removableRooms.ForEach(room =>
+                Console.WriteLine(
+                    $"Room {room.RoomNumber} | {room.RoomType} | " +
+                    $"OMR {room.PricePerNight:F2}"));
+
+            Console.WriteLine(
+                $"\nNumber of removable rooms: {removableRooms.Count()}");
+
+            char confirmation = ReadYesOrNo(
+                "Confirm removal (Y/N): ");
+
+            if (confirmation == 'N')
+            {
+                Console.WriteLine("Removal cancelled. No rooms were removed.");
+                return;
+            }
+
+            int removedCount = rooms.RemoveAll(room =>
+                !room.IsAvailable &&
+                !guests.Any(guest =>
+                    guest.RoomNumber == room.RoomNumber.ToString()));
+
+            Console.WriteLine($"\nRooms removed: {removedCount}");
+            Console.WriteLine($"Updated total room count: {rooms.Count()}");
+
+            List<string> remainingRooms = rooms
+                .OrderBy(room => room.RoomNumber)
+                .Select(room =>
+                    $"Room {room.RoomNumber} — {room.RoomType}")
+                .ToList();
+
+            Console.WriteLine("\nRemaining rooms:");
+
+            if (!remainingRooms.Any())
+            {
+                Console.WriteLine("No rooms remain.");
+            }
+            else
+            {
+                remainingRooms.ForEach(item => Console.WriteLine(item));
             }
         }
         
