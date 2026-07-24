@@ -200,7 +200,7 @@ public class Program
 
     static void Main(string[] args)
     {
-        /*
+        
         bool exitApp = false;
 
         while (exitApp == false)
@@ -275,7 +275,7 @@ public class Program
             
 
         }
-        */
+        
     }
     
     // --------------------------- Helpers ---------------------------
