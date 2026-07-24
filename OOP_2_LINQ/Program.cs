@@ -142,11 +142,11 @@ namespace OOP_2_LINQ
                     case 12:
                         RemoveUnavailableRooms(rooms, guests);
                         break;
-                    /*
+                    
                     case 13:
                         ExtendGuestStay(guests);
                         break;
-
+                    /*
                     case 14:
                         HighestRevenueBooking(guests);
                         break;
@@ -753,6 +753,45 @@ namespace OOP_2_LINQ
                 remainingRooms.ForEach(item => Console.WriteLine(item));
             }
         }
+        
+        // =========================================================
+        // CASE 13 - EXTEND GUEST STAY
+        // =========================================================
+        static void ExtendGuestStay(List<Guest> guests)
+        {
+            Console.WriteLine("=== EXTEND GUEST STAY ===");
+
+            string guestId = ReadRequiredText("Enter guest ID: ").ToUpper();
+
+            Guest guest = guests.FirstOrDefault(g =>
+                g.GuestId.Equals(
+                    guestId,
+                    StringComparison.OrdinalIgnoreCase));
+
+            if (guest == null)
+            {
+                Console.WriteLine("Guest not found.");
+                return;
+            }
+
+            if (guest.RoomNumber == "Not Assigned")
+            {
+                Console.WriteLine(
+                    "This guest has no active booking to extend.");
+                return;
+            }
+
+            int additionalNights = ReadPositiveInt(
+                "Enter additional nights: ");
+
+            guest.TotalNights += additionalNights;
+
+            Console.WriteLine("Stay extended successfully.");
+            Console.WriteLine($"Updated total nights: {guest.TotalNights}");
+            Console.WriteLine(
+                $"New total cost: OMR {guest.CalculateTotalCost():F2}");
+        }
+
         
         // =========================================================
         // SIMPLE HELPER METHODS
