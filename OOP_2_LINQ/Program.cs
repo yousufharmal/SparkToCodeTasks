@@ -146,7 +146,7 @@ namespace OOP_2_LINQ
                     case 13:
                         ExtendGuestStay(guests);
                         break;
-                    /*
+                    
                     case 14:
                         HighestRevenueBooking(guests);
                         break;
@@ -163,7 +163,7 @@ namespace OOP_2_LINQ
                     default:
                         Console.WriteLine("Invalid menu choice.");
                         break;
-                    */
+                    
                 }
                 
                     
@@ -790,6 +790,81 @@ namespace OOP_2_LINQ
             Console.WriteLine($"Updated total nights: {guest.TotalNights}");
             Console.WriteLine(
                 $"New total cost: OMR {guest.CalculateTotalCost():F2}");
+        }
+        
+        // =========================================================
+        // CASE 14 - HIGHEST REVENUE BOOKING
+        // =========================================================
+        static void HighestRevenueBooking(List<Guest> guests)
+        {
+            Console.WriteLine("=== HIGHEST REVENUE BOOKING ===");
+
+            List<Guest> activeGuests = guests
+                .Where(guest => guest.RoomNumber != "Not Assigned")
+                .ToList();
+
+            if (!activeGuests.Any())
+            {
+                Console.WriteLine("No active bookings recorded.");
+                return;
+            }
+
+            var highestRevenueBooking = activeGuests
+                .Select(guest => new
+                {
+                    Name = guest.GuestName,
+                    RoomNumber = guest.RoomNumber,
+                    TotalCost = guest.CalculateTotalCost()
+                })
+                .OrderByDescending(booking => booking.TotalCost)
+                .Take(1)
+                .FirstOrDefault();
+
+            Console.WriteLine($"Guest name: {highestRevenueBooking.Name}");
+            Console.WriteLine($"Room number: {highestRevenueBooking.RoomNumber}");
+            Console.WriteLine(
+                $"Total cost: OMR {highestRevenueBooking.TotalCost:F2}");
+        }
+
+        // =========================================================
+        // CASE 15 - GUEST PAGINATION VIEWER
+        // =========================================================
+        static void GuestPaginationViewer(List<Guest> guests)
+        {
+            Console.WriteLine("=== GUEST PAGINATION VIEWER ===");
+
+            if (!guests.Any())
+            {
+                Console.WriteLine("No guests have been registered yet.");
+                return;
+            }
+
+            const int pageSize = 3;
+
+            int totalGuests = guests.Count();
+            int totalPages = (int)Math.Ceiling(
+                totalGuests / (double)pageSize);
+
+            int requestedPage = ReadPositiveInt("Enter page number: ");
+
+            if (requestedPage > totalPages)
+            {
+                Console.WriteLine("That page does not exist.");
+                return;
+            }
+
+            List<Guest> guestsOnPage = guests
+                .OrderBy(guest => guest.GuestName)
+                .Skip((requestedPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            Console.WriteLine(
+                $"\nPage {requestedPage} of {totalPages}");
+            Console.WriteLine(
+                $"Showing {guestsOnPage.Count()} guest(s):\n");
+
+            guestsOnPage.ForEach(guest => guest.DisplayGuest());
         }
 
         
