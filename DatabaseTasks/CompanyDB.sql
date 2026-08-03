@@ -162,3 +162,61 @@ CREATE TABLE Dept_Locations
         ON UPDATE NO ACTION
 );
 GO
+
+/* -------------------------
+   PROJECT
+   ------------------------- */
+CREATE TABLE Project
+(
+    Pnumber INT NOT NULL,
+    Pname VARCHAR(80) NOT NULL,
+    Plocation VARCHAR(50) NOT NULL,
+    Dnum INT NOT NULL,
+
+    CONSTRAINT PK_Project
+        PRIMARY KEY (Pnumber),
+
+    CONSTRAINT UQ_Project_Pname
+        UNIQUE (Pname),
+
+    /* CONTROLS relationship:
+       every Project is controlled by one Department */
+    CONSTRAINT FK_Project_Department
+        FOREIGN KEY (Dnum)
+        REFERENCES Department(Dnumber)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+);
+GO
+
+
+/* -------------------------
+   WORKS_ON
+   Junction table between Employee and Project
+   ------------------------- */
+CREATE TABLE Works_On
+(
+    Essn CHAR(9) NOT NULL,
+    Pno INT NOT NULL,
+    Hours DECIMAL(5,2) NOT NULL
+        CONSTRAINT DF_WorksOn_Hours DEFAULT (0),
+
+    CONSTRAINT PK_Works_On
+        PRIMARY KEY (Essn, Pno),
+
+    CONSTRAINT CK_WorksOn_Hours
+        CHECK (Hours BETWEEN 0 AND 168),
+
+    CONSTRAINT FK_WorksOn_Employee
+        FOREIGN KEY (Essn)
+        REFERENCES Employee(Ssn)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION,
+
+    CONSTRAINT FK_WorksOn_Project
+        FOREIGN KEY (Pno)
+        REFERENCES Project(Pnumber)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION
+);
+GO
