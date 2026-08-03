@@ -365,3 +365,21 @@ DELETE FROM Dept_Locations
 WHERE Dnumber = 1
   AND Dlocation = 'Seeb';
 GO
+
+/* =========================================================
+   FINAL TESTS
+   ========================================================= */
+
+SELECT DB_NAME() AS CurrentDatabase;
+GO
+
+SELECT * FROM Department ORDER BY Dnumber;
+SELECT * FROM Employee ORDER BY Ssn;
+SELECT * FROM Dept_Locations ORDER BY Dnumber, Dlocation;
+SELECT * FROM Project ORDER BY Pnumber;
+SELECT * FROM Works_On ORDER BY Essn, Pno;
+SELECT * FROM Dependent ORDER BY Essn, Dependent_name;
+GO
+
+DBCC CHECKCONSTRAINTS WITH ALL_CONSTRAINTS;
+GO
