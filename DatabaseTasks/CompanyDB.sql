@@ -356,3 +356,12 @@ SET Relationship = 'Daughter'
 WHERE Essn = '555555555'
   AND Dependent_name = 'Aisha';
 GO
+
+DELETE FROM Employee
+WHERE Ssn = '555555555';
+GO
+
+DELETE FROM Dept_Locations
+WHERE Dnumber = 1
+  AND Dlocation = 'Seeb';
+GO
