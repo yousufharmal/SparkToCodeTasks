@@ -327,3 +327,32 @@ VALUES
     ('222222222', 'Omar', 'M', '2015-08-09', 'Son'),
     ('555555555', 'Aisha', 'F', '2020-02-20', 'Child');
 GO
+
+
+UPDATE Employee
+SET Salary = Salary * 1.10
+WHERE Ssn = '444444444';
+GO
+
+UPDATE Employee
+SET Dno = 4,
+    Super_ssn = '222222222'
+WHERE Ssn = '555555555';
+GO
+
+UPDATE Project
+SET Plocation = 'Salalah'
+WHERE Pnumber = 30;
+GO
+
+UPDATE Works_On
+SET Hours = 24.00
+WHERE Essn = '555555555'
+  AND Pno = 20;
+GO
+
+UPDATE Dependent
+SET Relationship = 'Daughter'
+WHERE Essn = '555555555'
+  AND Dependent_name = 'Aisha';
+GO
