@@ -146,3 +146,19 @@ CREATE UNIQUE INDEX UX_Department_Mgr_ssn
 ON Department(Mgr_ssn)
 WHERE Mgr_ssn IS NOT NULL;
 GO
+
+CREATE TABLE Dept_Locations
+(
+    Dnumber INT NOT NULL,
+    Dlocation VARCHAR(50) NOT NULL,
+
+    CONSTRAINT PK_Dept_Locations
+        PRIMARY KEY (Dnumber, Dlocation),
+
+    CONSTRAINT FK_DeptLocations_Department
+        FOREIGN KEY (Dnumber)
+        REFERENCES Department(Dnumber)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION
+);
+GO
